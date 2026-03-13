@@ -6,7 +6,7 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "OpenClaw Flash Help",
   description: "OpenClaw Flash 中文帮助文档",
-  base: "/",
+  base: "/openclaw-flash/",
   bundler: viteBundler(),
   theme: defaultTheme({
     navbar: false,
