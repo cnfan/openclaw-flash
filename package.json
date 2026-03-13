@@ -1,5 +1,5 @@
 {
-  "name": "openclaw-flash-help",
+  "name": "openclaw-flash",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.27.0",
