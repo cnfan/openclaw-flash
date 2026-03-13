@@ -1,0 +1,1 @@
+export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"zh-CN\",\"title\":\"OpenClaw Flash Help\",\"description\":\"OpenClaw Flash 中文帮助文档\",\"head\":[],\"locales\":{\"/\":{\"lang\":\"zh-CN\",\"title\":\"OpenClaw Flash Help\",\"description\":\"OpenClaw Flash 中文帮助文档\"}}}")

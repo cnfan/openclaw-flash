@@ -1,0 +1,18 @@
+{
+  "name": "openclaw-flash-help",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.27.0",
+  "scripts": {
+    "docs:dev": "vuepress dev docs --host 0.0.0.0 --port 8080",
+    "docs:build": "vuepress build docs",
+    "docs:clean": "vuepress cleanup docs"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "^2.0.0-rc.24",
+    "@vuepress/theme-default": "^2.0.0-rc.24",
+    "sass-embedded": "^1.93.2",
+    "vue": "^3.5.13",
+    "vuepress": "^2.0.0-rc.24"
+  }
+}
