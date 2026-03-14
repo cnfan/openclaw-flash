@@ -53,6 +53,12 @@ const onClick = (event: Event): void => {
     if (openGroupKey?.value !== groupKey.value) {
       openGroupKey!.value = groupKey.value;
     }
+
+    const firstLeafLink =
+      "children" in item && Array.isArray(item.children) ? item.children[0]?.link : "";
+    if (firstLeafLink && route.path !== firstLeafLink) {
+      void router.push(firstLeafLink);
+    }
     return;
   }
   isOpenLocal.value = !isOpenLocal.value;
