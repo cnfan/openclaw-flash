@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { onContentUpdated } from "vuepress/client";
 
 type HeadingItem = {
@@ -10,6 +10,7 @@ type HeadingItem = {
 
 const headings = ref<HeadingItem[]>([]);
 const activeId = ref("");
+const panelRef = ref<HTMLElement | null>(null);
 let ticking = false;
 
 const visibleHeadings = computed(() => headings.value);
@@ -54,6 +55,30 @@ const onScroll = (): void => {
   });
 };
 
+const syncAnchorScrollToActive = (): void => {
+  const panel = panelRef.value;
+  if (!panel || !activeId.value) return;
+
+  const buttons = panel.querySelectorAll<HTMLButtonElement>(".anchor-item");
+  let activeButton: HTMLButtonElement | null = null;
+  for (const button of buttons) {
+    if (button.dataset.anchorId === activeId.value) {
+      activeButton = button;
+      break;
+    }
+  }
+  if (!activeButton) return;
+
+  const panelRect = panel.getBoundingClientRect();
+  const buttonRect = activeButton.getBoundingClientRect();
+  const edgePadding = 8;
+  const outOfViewTop = buttonRect.top < panelRect.top + edgePadding;
+  const outOfViewBottom = buttonRect.bottom > panelRect.bottom - edgePadding;
+  if (outOfViewTop || outOfViewBottom) {
+    activeButton.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "auto" });
+  }
+};
+
 const scrollToHeading = (id: string): void => {
   const target = document.getElementById(id);
   if (!target) return;
@@ -75,16 +100,23 @@ onContentUpdated(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
 });
+
+watch(activeId, () => {
+  void nextTick(() => {
+    syncAnchorScrollToActive();
+  });
+});
 </script>
 
 <template>
-  <aside v-if="headings.length" class="doc-anchor-panel" aria-label="页面锚点导航">
+  <aside v-if="headings.length" ref="panelRef" class="doc-anchor-panel" aria-label="页面锚点导航">
     <div class="anchor-title">本页目录</div>
     <ul class="anchor-list">
       <li v-for="item in visibleHeadings" :key="item.id">
         <button
           type="button"
           class="anchor-item"
+          :data-anchor-id="item.id"
           :class="{
             active: item.id === activeId,
             'is-sub': item.level > 2
@@ -104,7 +136,10 @@ onBeforeUnmount(() => {
   top: calc(var(--navbar-height) + 1rem);
   left: calc(var(--sidebar-width) + 1rem);
   width: 220px;
-  overflow: visible;
+  max-height: calc(100vh - var(--navbar-height) - 2rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -122,7 +157,6 @@ onBeforeUnmount(() => {
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow: visible;
 }
 
 .anchor-item {
