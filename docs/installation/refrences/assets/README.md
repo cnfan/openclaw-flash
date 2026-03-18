@@ -27,14 +27,8 @@ installation/
    - `step3-config-ubuntu.png` - 配置Ubuntu的截图
    - `result-success.png` - 成功结果的截图
 
-4. **引用**：在对应的md文件中使用相对路径引用
-   ```markdown
-   ![步骤说明](./assets/<文件夹名>/图片文件名.png)
-   ```
+4. **引用**：在对应的 md 文件中填写真实存在的图片路径
 
 ## 示例
 
-在 `windows-wsl2.md` 中引用图片：
-```markdown
-![安装WSL2](./assets/windows-wsl2/step1-install-wsl2.png)
-```
+在引用前先确认文件已存在，再插入到文档中。
