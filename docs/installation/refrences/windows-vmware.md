@@ -6,9 +6,9 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| [WSL2](/installation/windows-wsl2.html) | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | 大多数用户的首选 |
+| [WSL2](/installation/refrences/windows-wsl2.html) | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | 大多数用户的首选 |
 | VMware 虚拟机 | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
-| [直接安装](/installation/windows-native.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
+| [直接安装](/installation/refrences/windows-native.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
 
 VMware 虚拟机相比 WSL2 的优势：
 - ✅ **完整的系统隔离**：独立的虚拟机环境
@@ -157,7 +157,7 @@ sudo reboot
 
 在虚拟机里的 Ubuntu 中，OpenClaw 安装流程与 Ubuntu 本机完全一致，直接按这篇执行即可：
 
-- [Linux 安装方法 2（APT）：直接安装](/installation/linux-native-apt.html)
+- [Linux 安装方法 2（APT）：直接安装](/installation/refrences/linux-native-apt.html)
 
 建议从该文档的“步骤 1：配置加速源”开始一路执行到“验证安装”。
 

@@ -7,8 +7,8 @@
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
 | WSL2 | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | **大多数用户的首选** |
-| [VMware 虚拟机](/installation/windows-vmware.html) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
-| [直接安装](/installation/windows-native.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
+| [VMware 虚拟机](/installation/refrences/windows-vmware.html) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
+| [直接安装](/installation/refrences/windows-native.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
 
 <details>
 <summary>WSL1 与 WSL2 的区别（目前官方默认支持 WSL2，不需要特别注意）</summary>
@@ -159,7 +159,7 @@ systemctl --version
 
 在 WSL 场景中，WSL 特有步骤（WSL2 安装、版本确认、systemd）完成后，剩余 OpenClaw 安装流程与 Ubuntu 本机一致，直接按这篇执行：
 
-- [Linux 安装方法 2（APT）：直接安装](/installation/linux-native-apt.html)
+- [Linux 安装方法 2（APT）：直接安装](/installation/refrences/linux-native-apt.html)
 
 建议从该文档的“步骤 2：安装 Node.js”开始继续；如果你想完整复核，也可以从“步骤 1：配置加速源”开始。
 

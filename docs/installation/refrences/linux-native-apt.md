@@ -4,9 +4,9 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| [Docker](/installation/linux-docker.html) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 低 | **大多数用户的首选** |
+| [Docker](/installation/refrences/linux-docker.html) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 低 | **大多数用户的首选** |
 | 直接安装 (APT) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
-| [直接安装 (YUM)](/installation/linux-native-yum.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
+| [直接安装 (YUM)](/installation/refrences/linux-native-yum.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
 
 ::: warning 重要提示
 **不推荐在包含以下内容的计算机上使用此安装方式**：
@@ -25,7 +25,7 @@
 - ❌ 日常使用的个人电脑
 - ❌ 包含任何工作或隐私数据的生产服务器
 
-**强烈建议使用 [Docker 安装方式](/installation/linux-docker.html)** 以获得更好的隔离性和安全性。
+**强烈建议使用 [Docker 安装方式](/installation/refrences/linux-docker.html)** 以获得更好的隔离性和安全性。
 :::
 
 这是传统的 Linux 安装方式，直接在主机系统上安装和运行 OpenClaw。本文档适用于 **基于 APT 的发行版**（Debian、Ubuntu、Linux Mint 等）。
@@ -40,7 +40,7 @@ which apt
 
 如果输出 `/usr/bin/apt`，说明你的系统使用 APT，可以继续本文档。
 
-如果输出为空或你使用的是 CentOS、Fedora、RHEL 等系统，请参考 [Linux 安装方法 2（YUM）：直接安装](/installation/linux-native-yum.html)。
+如果输出为空或你使用的是 CentOS、Fedora、RHEL 等系统，请参考 [Linux 安装方法 2（YUM）：直接安装](/installation/refrences/linux-native-yum.html)。
 
 ## 前置条件
 

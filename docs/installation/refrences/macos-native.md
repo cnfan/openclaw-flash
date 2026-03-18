@@ -4,7 +4,7 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| [Docker](/installation/macos-docker.html) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 中等 | **大多数用户的首选** |
+| [Docker](/installation/refrences/macos-docker.html) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 中等 | **大多数用户的首选** |
 | 直接安装 | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用 Mac |
 
 ::: warning 重要提示
@@ -29,7 +29,7 @@
 - ❌ 包含任何工作或隐私数据的生产 Mac
 - ❌ 公司配发的办公 Mac
 
-**强烈建议使用 [Docker 安装方式](/installation/macos-docker.html)** 以获得更好的隔离性和安全性。
+**强烈建议使用 [Docker 安装方式](/installation/refrences/macos-docker.html)** 以获得更好的隔离性和安全性。
 :::
 
 这是传统的 macOS 安装方式，直接在系统上安装和运行 OpenClaw。

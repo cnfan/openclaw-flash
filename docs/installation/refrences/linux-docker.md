@@ -7,8 +7,8 @@
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
 | Docker | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 低 | **大多数用户的首选** |
-| [直接安装 (APT)](/installation/linux-native-apt.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
-| [直接安装 (YUM)](/installation/linux-native-yum.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
+| [直接安装 (APT)](/installation/refrences/linux-native-apt.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
+| [直接安装 (YUM)](/installation/refrences/linux-native-yum.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
 
 ## 为什么推荐 Docker 安装？
 
@@ -31,7 +31,7 @@
 
 先执行共享安装步骤：
 
-- [Docker 安装（共享步骤）](/installation/docker-install.html)
+- [Docker 安装（共享步骤）](/installation/refrences/docker-install.html)
 
 在共享页中，选择“Linux（Ubuntu / Debian）安装 Docker Engine”章节执行完成后，再继续本页后续步骤。
 
