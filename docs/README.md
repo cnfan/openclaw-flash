@@ -11,6 +11,7 @@
 
 ## 文档入口
 
+- [安装Openclaw](./installation/)
 - [OpenClaw Onboard 教程](/guides/onboard.html)
 - [OpenClaw 设置教程](/guides/settings.html)
 - [OpenClaw 常用机制](/guides/mechanisms.html)

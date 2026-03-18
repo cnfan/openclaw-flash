@@ -1,6 +1,41 @@
-# Windows 安装方法 3：直接安装
+# Windows 安装方法 3：直接安装（不推荐）
 
-如果你不想使用虚拟化技术，可以直接在 Windows 上通过 PowerShell 安装 OpenClaw。这种方式最简单，但某些功能可能不如 WSL2 完整。
+## 推荐等级说明
+
+| 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
+|---------|---------|--------|---------|---------|
+| [WSL2](/installation/windows-wsl2.html) | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | **大多数用户的首选** |
+| [VMware 虚拟机](/installation/windows-vmware.html) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
+| 直接安装 | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
+
+::: warning 重要提示
+**不推荐在包含以下内容的 Windows 电脑上使用此安装方式**：
+
+- **工作相关资料**：会计财务数据、商业机密、商用资料、客户信息、公司文档
+- **个人隐私内容**：个人照片、文档、聊天记录、密码文件、浏览器历史记录
+- **敏感开发项目**：私有代码仓库、API 密钥、配置文件、SSH 密钥
+- **系统凭证**：Windows 凭据管理器中的密码、证书、域账户信息
+- **任何你不希望暴露的数据**
+
+**原因**：直接安装会将 OpenClaw 运行在 Windows 主系统上，如果 OpenClaw 或其依赖存在安全漏洞，可能影响系统上的所有数据，包括：
+- 访问用户的文件系统
+- 读取环境变量中的敏感信息
+- 潜在访问 Windows 凭据管理器
+- 影响其他正在运行的应用
+
+**适用场景**：
+- ✅ 专用于 OpenClaw 的独立 Windows 设备
+- ✅ 临时测试环境（无敏感数据）
+- ✅ 可随时重装系统的测试机
+- ❌ 日常使用的个人电脑
+- ❌ 包含任何工作或隐私数据的生产电脑
+- ❌ 公司配发的办公电脑
+- ❌ 加入域的企业环境
+
+**强烈建议使用 [WSL2 安装方式](/installation/windows-wsl2.html)** 或 **[VMware 虚拟机安装方式](/installation/windows-vmware.html)** 以获得更好的隔离性和安全性。
+:::
+
+如果你不想使用虚拟化技术，可以直接在 Windows 上通过 PowerShell 安装 OpenClaw。这种方式最简单，但**缺乏隔离性，安全性最低**。
 
 ## 前置条件
 
@@ -12,7 +47,7 @@
 
 ### 方法 A：使用官方安装包（推荐）
 
-1. 访问 [Node.js 官网](https://nodejs.org/)
+1. 访问 [npmmirror Node 镜像](https://npmmirror.com/mirrors/node/)
 2. 下载 **LTS 版本**（推荐 22.x 或 24.x）
 3. 运行安装程序，按提示完成安装
 
@@ -33,6 +68,12 @@ choco install nodejs-lts
 ```powershell
 node --version
 npm --version
+```
+
+设置 npm 国内镜像：
+
+```powershell
+npm config set registry https://registry.npmmirror.com
 ```
 
 ## 步骤 2：安装 OpenClaw
@@ -225,21 +266,3 @@ $env:NODE_TLS_REJECT_UNAUTHORIZED = "0"
 - 无需虚拟化
 - 原生 Windows 环境
 - 资源占用最低
-
-### 缺点
-
-- 某些功能可能不如 WSL2 完整
-- 后台服务配置较复杂
-- 某些 Linux 专用工具不可用
-- 文件路径差异可能导致问题
-
-## 下一步
-
-- [配置消息渠道](/integrations/feishu.html)
-- [了解 onboard 命令](/guides/onboard.html)
-- [私信安全和批准](https://docs.openclaw.ai/pairing)
-
-## 官方参考
-
-- [OpenClaw 入门指南](https://docs.openclaw.ai/zh-CN/start/getting-started)
-- [CLI 新手引导](https://docs.openclaw.ai/start/wizard)

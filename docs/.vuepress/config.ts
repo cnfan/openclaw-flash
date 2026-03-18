@@ -5,9 +5,37 @@ import { getDirname, path } from "vuepress/utils";
 
 const __dirname = getDirname(import.meta.url);
 
+const installationChildren = ["/installation/README.md"];
+const guideChildren = ["/guides/intro.md", "/guides/openclaw-self-intro.md", "/guides/onboard.md", "/guides/settings.md", "/guides/mechanisms.md"];
+const integrationChildren = ["/integrations/feishu.md", "/integrations/qq.md"];
+const helpIndexChildren = ["/help-index/README.md"];
+
+const sidebarSections = [
+  {
+    text: "快速安装",
+    collapsible: true,
+    children: installationChildren
+  },
+  {
+    text: "新手玩家",
+    collapsible: true,
+    children: guideChildren
+  },
+  {
+    text: "渠道接入",
+    collapsible: true,
+    children: integrationChildren
+  },
+  {
+    text: "帮助索引",
+    collapsible: true,
+    children: helpIndexChildren
+  }
+];
+
 export default defineUserConfig({
   lang: "zh-CN",
-  title: "OpenClaw Flash Help",
+  title: "OpenClaw Flash",
   description: "OpenClaw Flash 中文帮助文档",
   base: "/openclaw-flash/",
   clientConfigFile: path.resolve(__dirname, "./client.ts"),
@@ -16,146 +44,10 @@ export default defineUserConfig({
     navbar: [
       {
         text: "教程",
-        link: "/guides/onboard.html"
+        link: "/installation/README.md"
       }
     ],
-    sidebar: {
-      "/": [
-        {
-          text: "快速安装",
-          collapsible: true,
-          children: [
-            "/installation/windows-wsl2.md",
-            "/installation/windows-vmware.md",
-            "/installation/windows-native.md"
-          ]
-        },
-        {
-          text: "基础指南",
-          collapsible: true,
-          children: [
-            "/README.md",
-            "/guides/onboard.md",
-            "/guides/settings.md",
-            "/guides/mechanisms.md"
-          ]
-        },
-        {
-          text: "渠道接入",
-          collapsible: true,
-          children: ["/integrations/feishu.md", "/integrations/qq.md"]
-        },
-        {
-          text: "帮助索引",
-          collapsible: true,
-          children: ["/help-index/README.md"]
-        }
-      ],
-      "/guides/": [
-        {
-          text: "快速安装",
-          collapsible: true,
-          children: [
-            "/installation/windows-wsl2.md",
-            "/installation/windows-vmware.md",
-            "/installation/windows-native.md"
-          ]
-        },
-        {
-          text: "基础指南",
-          collapsible: true,
-          children: ["/guides/onboard.md", "/guides/settings.md", "/guides/mechanisms.md"]
-        },
-        {
-          text: "渠道接入",
-          collapsible: true,
-          children: ["/integrations/feishu.md", "/integrations/qq.md"]
-        },
-        {
-          text: "帮助索引",
-          collapsible: true,
-          children: ["/help-index/README.md"]
-        }
-      ],
-      "/integrations/": [
-        {
-          text: "快速安装",
-          collapsible: true,
-          children: [
-            "/installation/windows-wsl2.md",
-            "/installation/windows-vmware.md",
-            "/installation/windows-native.md"
-          ]
-        },
-        {
-          text: "基础指南",
-          collapsible: true,
-          children: ["/guides/onboard.md", "/guides/settings.md", "/guides/mechanisms.md"]
-        },
-        {
-          text: "渠道接入",
-          collapsible: true,
-          children: ["/integrations/feishu.md", "/integrations/qq.md"]
-        },
-        {
-          text: "帮助索引",
-          collapsible: true,
-          children: ["/help-index/README.md"]
-        }
-      ],
-      "/help-index/": [
-        {
-          text: "快速安装",
-          collapsible: true,
-          children: [
-            "/installation/windows-wsl2.md",
-            "/installation/windows-vmware.md",
-            "/installation/windows-native.md"
-          ]
-        },
-        {
-          text: "基础指南",
-          collapsible: true,
-          children: ["/guides/onboard.md", "/guides/settings.md", "/guides/mechanisms.md"]
-        },
-        {
-          text: "渠道接入",
-          collapsible: true,
-          children: ["/integrations/feishu.md", "/integrations/qq.md"]
-        },
-        {
-          text: "帮助索引",
-          collapsible: true,
-          children: ["/help-index/README.md"]
-        }
-      ],
-      "/installation/": [
-        {
-          text: "快速安装",
-          collapsible: true,
-          children: [
-            "/installation/windows-wsl2.md",
-            "/installation/windows-vmware.md",
-            "/installation/windows-native.md"
-          ]
-        },
-        {
-          text: "基础指南",
-          collapsible: true,
-          children: ["/guides/onboard.md", "/guides/settings.md", "/guides/mechanisms.md"]
-        },
-        {
-          text: "渠道接入",
-          collapsible: true,
-          children: ["/integrations/feishu.md", "/integrations/qq.md"]
-        },
-        {
-          text: "帮助索引",
-          collapsible: true,
-          children: ["/help-index/README.md"]
-        }
-      ]
-    },
+    sidebar: sidebarSections,
     sidebarDepth: 0,
     editLink: false,
     contributors: false,
