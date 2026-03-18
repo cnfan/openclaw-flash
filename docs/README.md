@@ -16,7 +16,6 @@
 - [和龙虾对话（QQ / 飞书）](/installation/talk-with-lobster.html)
 - [让龙虾掌控workspace](/installation/workspace-control.html)
 - [OpenClaw 常用机制](/guides/mechanisms.html)
-- [索引帮助页](/help-index/help-index.html)
 
 ## 后续建议补充
 

@@ -17,7 +17,6 @@
 - [OpenClaw 常用机制](/guides/mechanisms.html)
 - [飞书接入教程](/integrations/feishu.html)
 - [QQ 接入教程](/integrations/qq.html)
-- [索引帮助页](/help-index/)
 
 ## 后续建议补充
 

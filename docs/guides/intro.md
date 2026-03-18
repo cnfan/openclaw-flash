@@ -1,15 +1,13 @@
-# 初识Openclaw
+## 初识Openclaw
 
 这篇先解决一个关键问题：`~/.openclaw` 与 `~/.openclaw/workspace` 到底是什么、该怎么用。
-
-## 先记住这两个目录
 
 - ` ~/.openclaw`：OpenClaw 的“主目录”
 - ` ~/.openclaw/workspace`：OpenClaw 的“工作区目录”
 
 在 Docker 安装方式下，~ 就是 `/home/node`。
 
-## `~/.openclaw` 是什么
+### `~/.openclaw` 是什么
 
 **下面先说一些用户容易理解的东西：**
 
@@ -34,7 +32,7 @@
 - 用最小权限（建议 `700`）
 - 定期做备份
 
-## `~/.openclaw/workspace` 是什么
+### `~/.openclaw/workspace` 是什么
 
 `workspace` 更像“工作上下文目录”，用于放本次项目相关内容，例如：
 
@@ -67,62 +65,9 @@
   └─ ...
 ```
 
-使用建议：
 
-- 一个项目一个子目录，避免上下文串线
-- 跨项目共用能力放 `~/.openclaw/skills`，项目私有能力放 `<workspace>/skills`
-- 大改前先备份或打快照，减少误操作恢复成本
-
-## 为什么要这样分层
-
-这和主流 AI Agent 工程实践一致：把“长期状态”和“任务工作区”分开，便于隔离、迁移、审计和回滚。
-
-当前主流实践的共同点：
-
-- 优先在隔离环境运行（容器 / 虚拟机 / 沙箱）
-- 指令与记忆使用项目级文件管理（如 AGENTS.md、CLAUDE.md）
-- 任务执行在独立环境中完成，降低主系统风险
-
-## 你可以直接照做的运维动作
-
+### 注意备份，你的龙虾可以起死回生
 ```bash
-# 查看目录结构
-ls -la ~/.openclaw
-ls -la ~/.openclaw/workspace
-
-# 仅示例：权限收敛
-chmod 700 ~/.openclaw
-
-# 备份
+# 备份(普通用户可以直接复制走我说的~/.openclaw ，这样死后删除原来的，再复制回来就完成重生了)
 tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz -C /home/node .openclaw
 ```
-
-## 常见误区
-
-- 把 `workspace` 当成安全沙箱：它是工作目录，不是完整安全边界
-- 把整个 `.openclaw` 暴露给多人共享：会带来凭证和状态污染风险
-- 不做备份直接升级：一旦配置损坏，恢复成本高
-
-## 下一步
-
-- [Openclaw 的自我介绍](./openclaw-self-intro.md)
-- [快速设置（安装后）](../installation/quick-start.md)
-- [让龙虾掌控workspace](../installation/workspace-control.md)
-- [常用机制](./mechanisms.md)
-
-## 关键规则文档索引（原文 + 中文）
-
-- AGENTS： [原文](./refrences/AGENTS.md) ｜ [中文](./refrences/AGENTS.zh-CN.md)
-- SOUL： [原文](./refrences/SOUL.md) ｜ [中文](./refrences/SOUL.zh-CN.md)
-- USER： [原文](./refrences/USER.md) ｜ [中文](./refrences/USER.zh-CN.md)
-- TOOLS： [原文](./refrences/TOOLS.md) ｜ [中文](./refrences/TOOLS.zh-CN.md)
-- IDENTITY： [原文](./refrences/IDENTITY.md) ｜ [中文](./refrences/IDENTITY.zh-CN.md)
-- BOOTSTRAP： [原文](./refrences/BOOTSTRAP.md) ｜ [中文](./refrences/BOOTSTRAP.zh-CN.md)
-- HEARTBEAT： [原文](./refrences/HEARTBEAT.md) ｜ [中文](./refrences/HEARTBEAT.zh-CN.md)
-
-## 参考
-
-- OpenAI Codex（云端隔离环境与工作区实践）：https://developers.openai.com/codex/cloud/environments
-- OpenAI Codex（AGENTS.md 项目指令实践）：https://developers.openai.com/codex/guides/agents-md
-- Anthropic Claude Code（Best Practices）：https://code.claude.com/docs/en/best-practices
-- Anthropic Claude Code（Memory 机制）：https://code.claude.com/docs/en/memory

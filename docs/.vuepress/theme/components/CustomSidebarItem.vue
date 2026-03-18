@@ -50,15 +50,7 @@ const onClick = (event: Event): void => {
   event.preventDefault();
 
   if (isTopLevelAccordionGroup.value) {
-    if (openGroupKey?.value !== groupKey.value) {
-      openGroupKey!.value = groupKey.value;
-    }
-
-    const firstLeafLink =
-      "children" in item && Array.isArray(item.children) ? item.children[0]?.link : "";
-    if (firstLeafLink && route.path !== firstLeafLink) {
-      void router.push(firstLeafLink);
-    }
+    openGroupKey!.value = openGroupKey?.value === groupKey.value ? null : groupKey.value;
     return;
   }
   isOpenLocal.value = !isOpenLocal.value;

@@ -72,9 +72,3 @@ OpenClaw 常见加载位置：
 - `memory/YYYY-MM-DD.md`：放原始过程记录
 
 这样分层后，模型会更容易“在正确时机读正确文档”。
-
-## 相关阅读
-
-- [OpenClaw 常用机制](./mechanisms.md)
-- [初识Openclaw](./intro.md)
-- [Openclaw 的自我介绍](./openclaw-self-intro.md)

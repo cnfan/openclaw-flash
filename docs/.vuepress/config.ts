@@ -12,7 +12,6 @@ const installationChildren = [
   "/installation/workspace-control.md"
 ];
 const guideChildren = ["/guides/intro.md", "/guides/openclaw-self-intro.md", "/guides/skills-progressive-disclosure.md", "/guides/mechanisms.md"];
-const helpIndexChildren = ["/help-index/help-index.md"];
 
 const sidebarSections = [
   {
@@ -24,11 +23,6 @@ const sidebarSections = [
     text: "新手玩家",
     collapsible: true,
     children: guideChildren
-  },
-  {
-    text: "帮助索引",
-    collapsible: true,
-    children: helpIndexChildren
   }
 ];
 
