@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
-import { onContentUpdated } from "vuepress/client";
+import { onContentUpdated, useRoute, useRouter } from "vuepress/client";
 
 type HeadingItem = {
   id: string;
@@ -12,8 +12,34 @@ const headings = ref<HeadingItem[]>([]);
 const activeId = ref("");
 const panelRef = ref<HTMLElement | null>(null);
 let ticking = false;
+const route = useRoute();
+const router = useRouter();
 
 const visibleHeadings = computed(() => headings.value);
+const isReferencePage = computed(() => route.path.includes("/refrences/"));
+const section = computed(() => {
+  const match = route.path.match(/^\/([^/]+)\/refrences\//);
+  return match ? match[1] : "";
+});
+
+const referenceBackConfig = computed(() => {
+  if (route.path.startsWith("/installation/refrences/diagnose-lobster.html")) {
+    return { title: "让龙虾飞", path: "/installation/workspace-control.html" };
+  }
+  if (section.value === "guides") return { title: "新手玩家", path: "/guides/openclaw-self-intro.html" };
+  if (section.value === "installation") return { title: "快速安装", path: "/installation/installation-guide.html" };
+  if (section.value === "integrations") return { title: "渠道接入", path: "/integrations/feishu.html" };
+  if (section.value === "help-index") return { title: "帮助索引", path: "/help-index/help-index.html" };
+  return { title: "上级", path: "/" };
+});
+
+const fallbackPath = computed(() => {
+  return referenceBackConfig.value.path;
+});
+
+const parentTitle = computed(() => {
+  return referenceBackConfig.value.title;
+});
 
 const collectHeadings = (): void => {
   const nodes = Array.from(
@@ -32,12 +58,26 @@ const collectHeadings = (): void => {
 };
 
 const updateActiveHeading = (): void => {
+  if (headings.value.length === 0) {
+    activeId.value = "";
+    return;
+  }
+
+  const doc = document.documentElement;
+  const viewportBottom = window.scrollY + window.innerHeight;
+  const pageBottom = doc.scrollHeight;
+  if (viewportBottom >= pageBottom - 2) {
+    activeId.value = headings.value[headings.value.length - 1].id;
+    return;
+  }
+
   const topOffset = 96;
+  const probeLine = Math.max(topOffset, Math.round(window.innerHeight * 0.35));
   let currentId = headings.value[0]?.id ?? "";
   for (const heading of headings.value) {
     const element = document.getElementById(heading.id);
     if (!element) continue;
-    if (element.getBoundingClientRect().top <= topOffset) {
+    if (element.getBoundingClientRect().top <= probeLine) {
       currentId = heading.id;
     } else {
       break;
@@ -86,6 +126,14 @@ const scrollToHeading = (id: string): void => {
   window.history.replaceState(null, "", `#${id}`);
 };
 
+const goBack = (): void => {
+  if (window.history.length > 1) {
+    router.back();
+    return;
+  }
+  void router.push(fallbackPath.value);
+};
+
 onMounted(() => {
   collectHeadings();
   updateActiveHeading();
@@ -110,7 +158,10 @@ watch(activeId, () => {
 
 <template>
   <aside v-if="headings.length" ref="panelRef" class="doc-anchor-panel" aria-label="页面锚点导航">
-    <div class="anchor-title">本页目录</div>
+    <button v-if="isReferencePage" type="button" class="anchor-title anchor-title-back" @click="goBack">
+      返回 {{ parentTitle }}
+    </button>
+    <div v-else class="anchor-title">本页目录</div>
     <ul class="anchor-list">
       <li v-for="item in visibleHeadings" :key="item.id">
         <button
@@ -151,6 +202,21 @@ watch(activeId, () => {
   font-weight: 600;
   color: var(--vp-c-text-2);
   margin-bottom: 0.6rem;
+}
+
+.anchor-title-back {
+  border: 1px solid var(--vp-c-accent-bg);
+  background: var(--vp-c-accent-soft);
+  color: var(--vp-c-accent);
+  padding: 0.24rem 0.56rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.anchor-title-back:hover {
+  background: var(--vp-c-accent-bg);
+  color: var(--vp-c-accent-text);
 }
 
 .anchor-list {

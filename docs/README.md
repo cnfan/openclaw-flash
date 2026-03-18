@@ -11,13 +11,12 @@
 
 ## 文档入口
 
-- [安装Openclaw](./installation/)
-- [OpenClaw Onboard 教程](/guides/onboard.html)
-- [OpenClaw 设置教程](/guides/settings.html)
+- [安装龙虾](/installation/installation-guide.html)
+- [快速设置（安装后）](/installation/quick-start.html)
+- [和龙虾对话（QQ / 飞书）](/installation/talk-with-lobster.html)
+- [让龙虾掌控workspace](/installation/workspace-control.html)
 - [OpenClaw 常用机制](/guides/mechanisms.html)
-- [飞书接入教程](/integrations/feishu.html)
-- [QQ 接入教程](/integrations/qq.html)
-- [索引帮助页](/help-index/)
+- [索引帮助页](/help-index/help-index.html)
 
 ## 后续建议补充
 

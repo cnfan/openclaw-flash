@@ -106,8 +106,8 @@ tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz -C /home/node .openclaw
 ## 下一步
 
 - [Openclaw 的自我介绍](./openclaw-self-intro.md)
-- [Onboard 教程](./onboard.md)
-- [设置教程](./settings.md)
+- [快速设置（安装后）](../installation/quick-start.md)
+- [让龙虾掌控workspace](../installation/workspace-control.md)
 - [常用机制](./mechanisms.md)
 
 ## 关键规则文档索引（原文 + 中文）

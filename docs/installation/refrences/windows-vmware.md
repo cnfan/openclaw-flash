@@ -218,6 +218,6 @@ sudo resolvectl status
 
 ## 下一步
 
-- [配置消息渠道](/integrations/feishu.html)
-- [了解 onboard 命令](/guides/onboard.html)
+- [配置消息渠道（QQ / 飞书）](/installation/talk-with-lobster.html)
+- [了解快速设置](/installation/quick-start.html)
 - [私信安全和批准](https://docs.openclaw.ai/pairing)

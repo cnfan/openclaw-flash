@@ -8,10 +8,10 @@
 
 ## 一、推荐优先阅读
 
-- 已经完成安装，下一步看 [OpenClaw Onboard 教程](/guides/onboard.html)
-- 想调整配置，直接看 [OpenClaw 设置教程](/guides/settings.html)
+- 已经完成安装，下一步看 [快速设置（安装后）](/installation/quick-start.html)
+- 想调整配置，直接看 [让龙虾掌控workspace](/installation/workspace-control.html)
 - 想理解工作方式，阅读 [OpenClaw 常用机制](/guides/mechanisms.html)
-- 想接入渠道，优先看 [飞书接入教程](/integrations/feishu.html)
+- 想接入渠道，优先看 [和龙虾对话（QQ / 飞书）](/installation/talk-with-lobster.html)
 
 ## 二、后续建议补充
 
@@ -26,11 +26,10 @@
 
 ## 三、站内文档入口
 
-- [OpenClaw Onboard 教程](/guides/onboard.html)
-- [OpenClaw 设置教程](/guides/settings.html)
+- [快速设置（安装后）](/installation/quick-start.html)
+- [让龙虾掌控workspace](/installation/workspace-control.html)
 - [OpenClaw 常用机制](/guides/mechanisms.html)
-- [飞书接入教程](/integrations/feishu.html)
-- [QQ 接入教程](/integrations/qq.html)
+- [和龙虾对话（QQ / 飞书）](/installation/talk-with-lobster.html)
 
 ## 四、官方地址
 

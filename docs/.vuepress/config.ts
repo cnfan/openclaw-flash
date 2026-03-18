@@ -5,10 +5,14 @@ import { getDirname, path } from "vuepress/utils";
 
 const __dirname = getDirname(import.meta.url);
 
-const installationChildren = ["/installation/README.md"];
-const guideChildren = ["/guides/intro.md", "/guides/openclaw-self-intro.md", "/guides/onboard.md", "/guides/settings.md", "/guides/mechanisms.md"];
-const integrationChildren = ["/integrations/feishu.md", "/integrations/qq.md"];
-const helpIndexChildren = ["/help-index/README.md"];
+const installationChildren = [
+  "/installation/installation-guide.md",
+  "/installation/quick-start.md",
+  "/installation/talk-with-lobster.md",
+  "/installation/workspace-control.md"
+];
+const guideChildren = ["/guides/intro.md", "/guides/openclaw-self-intro.md", "/guides/skills-progressive-disclosure.md", "/guides/mechanisms.md"];
+const helpIndexChildren = ["/help-index/help-index.md"];
 
 const sidebarSections = [
   {
@@ -20,11 +24,6 @@ const sidebarSections = [
     text: "新手玩家",
     collapsible: true,
     children: guideChildren
-  },
-  {
-    text: "渠道接入",
-    collapsible: true,
-    children: integrationChildren
   },
   {
     text: "帮助索引",
@@ -44,7 +43,7 @@ export default defineUserConfig({
     navbar: [
       {
         text: "教程",
-        link: "/installation/README.md"
+        link: "/installation/installation-guide.md"
       }
     ],
     sidebar: sidebarSections,
