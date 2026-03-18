@@ -199,4 +199,40 @@ $MQMobile: 719px;
     }
   }
 }
+
+div[class*="language-"]::before {
+  display: none !important;
+}
+
+.vp-copy-code-button {
+  opacity: 1 !important;
+  width: auto !important;
+  height: 2rem !important;
+  padding: 0 0.75rem !important;
+  border-radius: 0.5rem;
+}
+
+.vp-copy-code-button::before {
+  content: "复制" !important;
+  width: auto !important;
+  height: auto !important;
+  background: none !important;
+  color: var(--copy-code-c-text);
+  padding: 0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  line-height: 1;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+.vp-copy-code-button.copied::before {
+  content: "已复制" !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+.vp-copy-code-button.copied::after {
+  display: none !important;
+}
 </style>

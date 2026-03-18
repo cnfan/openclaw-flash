@@ -31,6 +31,10 @@
 - sandbox 与权限边界
 - 升级与备份
 - 故障排查
+- 启动与重启文档站：
+  - 启动开发服务：`pnpm docs:dev`
+  - 生产构建：`pnpm docs:build`
+  - 清理缓存并重启：`pnpm docs:clean && pnpm docs:dev`
 
 ### 3. 团队协作
 
