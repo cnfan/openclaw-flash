@@ -93,10 +93,10 @@ docker run hello-world
 
 如果看到 "Hello from Docker!" 消息，说明 Docker 已正确安装。
 
-## 步骤 5：拉取 OpenClaw 镜像
+## 步骤 5：拉取 龙虾 镜像
 
 ```bash
-# 拉取最新版本的 OpenClaw 镜像
+# 拉取最新版本的 龙虾 镜像
 docker pull openclaw/openclaw:latest
 ```
 
@@ -124,7 +124,7 @@ mkdir -p ~/.openclaw
 chmod 700 ~/.openclaw
 ```
 
-## 步骤 7：运行 OpenClaw 容器
+## 步骤 7：运行 龙虾 容器
 
 ### 首次运行（初始化配置）
 

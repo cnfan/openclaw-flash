@@ -133,7 +133,7 @@ OpenClaw 需要一些系统库：
 sudo apt install -y build-essential python3
 ```
 
-## 步骤 4：安装 OpenClaw
+## 步骤 4：安装 龙虾
 
 ```bash
 curl -fsSL https://openclaw.ai/install.sh | bash
@@ -270,7 +270,7 @@ curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
 npm config set registry https://registry.npmmirror.com
 ```
 
-### 2. OpenClaw 安装脚本失败
+### 2. 龙虾 安装脚本失败
 
 **下载失败**
 
@@ -381,7 +381,7 @@ nvm alias default 24
 # 安装完整构建工具
 sudo apt install -y build-essential python3 python3-pip
 
-# 重新安装 OpenClaw
+# 重新安装 龙虾
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
@@ -411,7 +411,7 @@ tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz ~/.openclaw
 # 删除配置
 rm -rf ~/.openclaw
 
-# 删除 OpenClaw
+# 删除 龙虾
 rm -rf ~/.local/bin/openclaw
 
 # 清理服务文件

@@ -155,7 +155,7 @@ wsl
 systemctl --version
 ```
 
-## 步骤 5：安装 OpenClaw（复用 Ubuntu Native 指南）
+## 步骤 5：安装 龙虾（复用 Ubuntu Native 指南）
 
 在 WSL 场景中，WSL 特有步骤（WSL2 安装、版本确认、systemd）完成后，剩余 OpenClaw 安装流程与 Ubuntu 本机一致，直接按这篇执行：
 

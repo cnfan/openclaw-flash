@@ -76,7 +76,7 @@ npm --version
 npm config set registry https://registry.npmmirror.com
 ```
 
-## 步骤 2：安装 OpenClaw
+## 步骤 2：安装 龙虾
 
 以**管理员身份**打开 PowerShell，运行：
 
@@ -192,7 +192,7 @@ openclaw logs
 在 PowerShell 中设置：
 
 ```powershell
-# 设置 OpenClaw 主目录
+# 设置 龙虾 主目录
 $env:OPENCLAW_HOME = "C:\Users\$env:USERNAME\.openclaw"
 
 # 设置状态目录
@@ -233,7 +233,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 # 临时关闭防火墙（测试用）
 Set-NetFirewallProfile -Profile Private -Enabled False
 
-# 允许 OpenClaw 通过防火墙
+# 允许 龙虾 通过防火墙
 New-NetFirewallRule -DisplayName "OpenClaw Gateway" -Direction Inbound -LocalPort 18789 -Protocol TCP -Action Allow
 ```
 

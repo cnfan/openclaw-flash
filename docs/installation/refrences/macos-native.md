@@ -162,7 +162,7 @@ $ npm --version
 10.8.1
 ```
 
-## 步骤 4：安装 OpenClaw
+## 步骤 4：安装 龙虾
 
 ```bash
 curl -fsSL https://openclaw.ai/install.sh | bash
@@ -369,7 +369,7 @@ sudo chown -R $(whoami) /usr/local/lib/node_modules
 arch -x86_64 brew install node@24
 ```
 
-### 4. OpenClaw 安装脚本失败
+### 4. 龙虾 安装脚本失败
 
 **下载失败**
 
@@ -525,7 +525,7 @@ tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz ~/.openclaw
 # 删除配置
 rm -rf ~/.openclaw
 
-# 删除 OpenClaw
+# 删除 龙虾
 rm -rf ~/.local/bin/openclaw
 
 # 删除服务文件
@@ -560,7 +560,7 @@ ps aux | grep openclaw
 # 添加 HardMemoryLimit 和 SoftMemoryLimit
 ```
 
-### 12. 卸载 OpenClaw
+### 12. 卸载 龙虾
 
 **完全卸载**
 

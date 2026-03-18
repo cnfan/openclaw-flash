@@ -1,4 +1,4 @@
-## 初识Openclaw
+# 初识龙虾
 
 这篇先解决一个关键问题：`~/.openclaw` 与 `~/.openclaw/workspace` 到底是什么、该怎么用。
 
@@ -7,7 +7,7 @@
 
 在 Docker 安装方式下，~ 就是 `/home/node`。
 
-### `~/.openclaw` 是什么
+## 一、关于`~/.openclaw`
 
 **下面先说一些用户容易理解的东西：**
 
@@ -32,7 +32,7 @@
 - 用最小权限（建议 `700`）
 - 定期做备份
 
-### `~/.openclaw/workspace` 是什么
+## 二、关于`~/.openclaw/workspace`
 
 `workspace` 更像“工作上下文目录”，用于放本次项目相关内容，例如：
 
@@ -66,7 +66,7 @@
 ```
 
 
-### 注意备份，你的龙虾可以起死回生
+## 三、注意备份，你的龙虾可以起死回生
 ```bash
 # 备份(普通用户可以直接复制走我说的~/.openclaw ，这样死后删除原来的，再复制回来就完成重生了)
 tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz -C /home/node .openclaw

@@ -153,7 +153,7 @@ sudo reboot
 2. 名称填写：`最初的模样`
 3. 说明可写：`刚装好系统和 VMware Tools 的干净状态`
 
-## 步骤 7：安装 OpenClaw（直接复用 Ubuntu Native 指南）
+## 步骤 7：安装 龙虾（直接复用 Ubuntu Native 指南）
 
 在虚拟机里的 Ubuntu 中，OpenClaw 安装流程与 Ubuntu 本机完全一致，直接按这篇执行即可：
 
