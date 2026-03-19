@@ -48,31 +48,26 @@ const aboutChildren = [
 const tutorialSidebarSections = [
   {
     text: "龙虾误区",
-    link: "/misconceptions/not-just-a-chatbot.html",
     collapsible: true,
     children: misconceptionChildren
   },
   {
     text: "快速安装",
-    link: "/installation/installation-guide.html",
     collapsible: true,
     children: installationChildren
   },
   {
     text: "新手玩家",
-    link: "/guides/understand-llm.html",
     collapsible: true,
     children: guideChildren
   },
   {
     text: "高级玩家",
-    link: "/advanced/writer-workflow.html",
     collapsible: true,
     children: advancedChildren
   },
   {
     text: "专家玩家",
-    link: "/expert/external-systems.html",
     collapsible: true,
     children: expertChildren
   }
@@ -81,7 +76,6 @@ const tutorialSidebarSections = [
 const aboutSidebarSections = [
   {
     text: "关于作者",
-    link: "/about/openclaw-future-hll.html",
     collapsible: false,
     children: aboutChildren
   }
@@ -90,7 +84,6 @@ const aboutSidebarSections = [
 const vipSidebarSections = [
   {
     text: "VIP",
-    link: "/vip/about-vip.html",
     collapsible: false,
     children: vipChildren
   }

@@ -141,6 +141,17 @@ const onBeforeLeave = scrollPromise.pending;
 <style lang="scss">
 $MQMobile: 719px;
 
+.vp-theme-container {
+  --oc-fab-size: 56px;
+  --oc-fab-size-mobile: 48px;
+}
+
+@media (max-width: $MQMobile) {
+  .vp-theme-container {
+    --oc-fab-size: var(--oc-fab-size-mobile);
+  }
+}
+
 .vp-sidebar-mask {
   position: fixed;
   top: 0;

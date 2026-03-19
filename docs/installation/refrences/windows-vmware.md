@@ -99,62 +99,62 @@ isolation.tools.hgfs.disable = "TRUE"
 
 ::: details）安装 Ubuntu 系统前 VMware 准备设置
 
-!\[1-选择典型.png]\(./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/1-选择典型.png null)
-!\[2-选择Ubuntu镜像文件.png]\(./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/2-选择Ubuntu镜像文件.png null)
-!\[3-用户名和密码.png]\(./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/3-用户名和密码.png null)
-!\[4-虚拟机命名.png]\(./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/4-虚拟机命名.png null)
-!\[5-虚拟机文件系统设置.png]\(./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/5-虚拟机文件系统设置.png null)
-!\[6-完成虚拟机设置.png]\(./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/6-完成虚拟机设置.png null)
+![1-选择典型.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/1-选择典型.png)
+![2-选择Ubuntu镜像文件.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/2-选择Ubuntu镜像文件.png)
+![3-用户名和密码.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/3-用户名和密码.png)
+![4-虚拟机命名.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/4-虚拟机命名.png)
+![5-虚拟机文件系统设置.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/5-虚拟机文件系统设置.png)
+![6-完成虚拟机设置.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/6-完成虚拟机设置.png)
 :::
 
 ## 步骤 4：安装 Ubuntu图文引导
 
 ::: details 1）Ubuntu 系统安装步骤
 
-!\[1-语言选中文.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/1-语言选中文.png null)
-!\[2-可访问性.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/2-可访问性.png null)
-!\[3-键盘选英语（美国）.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/3-键盘选英语（美国）.png null)
-!\[4-网络连接.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/4-网络连接.png null)
-!\[5-安装Ubuntu.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/5-安装Ubuntu.png null)
-!\[6-选择交互式安装.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/6-选择交互式安装.png null)
-!\[7-建议扩展集合，不差这点硬盘.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/7-建议扩展集合，不差这点硬盘.png null)
-!\[8-显卡网卡驱动安装.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/8-显卡网卡驱动安装.png null)
-!\[9-开始安装.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/9-开始安装.png null)
-!\[10-不要加密硬盘.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/10-不要加密硬盘.png null)
-!\[12-用户和密码.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/12-用户和密码.png null)
-!\[13-时区设置.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/13-时区设置.png null)
-!\[14-最后确认.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/14-最后确认.png null)
-!\[15-重启.png]\(./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/15-重启.png null)
+![1-语言选中文.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/1-语言选中文.png)
+![2-可访问性.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/2-可访问性.png)
+![3-键盘选英语（美国）.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/3-键盘选英语（美国）.png)
+![4-网络连接.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/4-网络连接.png)
+![5-安装Ubuntu.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/5-安装Ubuntu.png)
+![6-选择交互式安装.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/6-选择交互式安装.png)
+![7-建议扩展集合，不差这点硬盘.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/7-建议扩展集合，不差这点硬盘.png)
+![8-显卡网卡驱动安装.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/8-显卡网卡驱动安装.png)
+![9-开始安装.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/9-开始安装.png)
+![10-不要加密硬盘.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/10-不要加密硬盘.png)
+![12-用户和密码.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/12-用户和密码.png)
+![13-时区设置.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/13-时区设置.png)
+![14-最后确认.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/14-最后确认.png)
+![15-重启.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/15-重启.png)
 :::
 
 ::: details 2）首次开机设置
 
-!\[1-如果前面选文件加密要输入密码.png]\(./assets/windows安装Ubuntu/3.首次开机设置/1-如果前面选文件加密要输入密码.png null)
-!\[2-用户选择.png]\(./assets/windows安装Ubuntu/3.首次开机设置/2-用户选择.png null)
-!\[3-用户密码.png]\(./assets/windows安装Ubuntu/3.首次开机设置/3-用户密码.png null)
-!\[4-首次开机设置.png]\(./assets/windows安装Ubuntu/3.首次开机设置/4-首次开机设置.png null)
-!\[5-我不共享数据.png]\(./assets/windows安装Ubuntu/3.首次开机设置/5-我不共享数据.png null)
-!\[6-完成.png]\(./assets/windows安装Ubuntu/3.首次开机设置/6-完成.png null)
-!\[7-虚拟机设置.png]\(./assets/windows安装Ubuntu/3.首次开机设置/7-虚拟机设置.png null)
-!\[8-顺手推出安装镜像.png]\(./assets/windows安装Ubuntu/3.首次开机设置/8-顺手推出安装镜像.png null)
-!\[9-选择桥接模式.png]\(./assets/windows安装Ubuntu/3.首次开机设置/9-选择桥接模式.png null)
-!\[10-联网测试.png]\(./assets/windows安装Ubuntu/3.首次开机设置/10-联网测试.png null)
+![1-如果前面选文件加密要输入密码.png](./assets/windows安装Ubuntu/3.首次开机设置/1-如果前面选文件加密要输入密码.png)
+![2-用户选择.png](./assets/windows安装Ubuntu/3.首次开机设置/2-用户选择.png)
+![3-用户密码.png](./assets/windows安装Ubuntu/3.首次开机设置/3-用户密码.png)
+![4-首次开机设置.png](./assets/windows安装Ubuntu/3.首次开机设置/4-首次开机设置.png)
+![5-我不共享数据.png](./assets/windows安装Ubuntu/3.首次开机设置/5-我不共享数据.png)
+![6-完成.png](./assets/windows安装Ubuntu/3.首次开机设置/6-完成.png)
+![7-虚拟机设置.png](./assets/windows安装Ubuntu/3.首次开机设置/7-虚拟机设置.png)
+![8-顺手推出安装镜像.png](./assets/windows安装Ubuntu/3.首次开机设置/8-顺手推出安装镜像.png)
+![9-选择桥接模式.png](./assets/windows安装Ubuntu/3.首次开机设置/9-选择桥接模式.png)
+![10-联网测试.png](./assets/windows安装Ubuntu/3.首次开机设置/10-联网测试.png)
 :::
 
 ::: details 3）其他必要设置
 
-!\[1-黑屏处理.png]\(./assets/windows安装Ubuntu/4.其他必要设置/1-黑屏处理.png null)
-!\[2-切换为拼音.png]\(./assets/windows安装Ubuntu/4.其他必要设置/2-切换为拼音.png null)
-!\[3-分辨率设置.png]\(./assets/windows安装Ubuntu/4.其他必要设置/3-分辨率设置.png null)
-!\[4-分辨率合适就好.png]\(./assets/windows安装Ubuntu/4.其他必要设置/4-分辨率合适就好.png null)
-!\[5-保留分辨率更改.png]\(./assets/windows安装Ubuntu/4.其他必要设置/5-保留分辨率更改.png null)
-!\[6-终端.png]\(./assets/windows安装Ubuntu/4.其他必要设置/6-终端.png null)
+![1-黑屏处理.png](./assets/windows安装Ubuntu/4.其他必要设置/1-黑屏处理.png)
+![2-切换为拼音.png](./assets/windows安装Ubuntu/4.其他必要设置/2-切换为拼音.png)
+![3-分辨率设置.png](./assets/windows安装Ubuntu/4.其他必要设置/3-分辨率设置.png)
+![4-分辨率合适就好.png](./assets/windows安装Ubuntu/4.其他必要设置/4-分辨率合适就好.png)
+![5-保留分辨率更改.png](./assets/windows安装Ubuntu/4.其他必要设置/5-保留分辨率更改.png)
+![6-终端.png](./assets/windows安装Ubuntu/4.其他必要设置/6-终端.png)
 :::
 
 ::: details 4）VMware 虚拟机日常操作
 
-!\[1-开关机，重启.png]\(./assets/windows安装Ubuntu/VMware虚拟机使用/1-开关机，重启.png null)
-!\[2. 快照-时光机.png]\(./assets/windows安装Ubuntu/VMware虚拟机使用/2. 快照-时光机.png null)
+![1-开关机，重启.png](./assets/windows安装Ubuntu/VMware虚拟机使用/1-开关机，重启.png)
+![2. 快照-时光机.png](./assets/windows安装Ubuntu/VMware虚拟机使用/2. 快照-时光机.png)
 :::
 
 ## 步骤 4.5：发行版升级到最新可用版本（按需）
