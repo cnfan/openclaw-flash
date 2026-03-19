@@ -38,6 +38,8 @@ const expertChildren = [
   "/expert/external-systems.md"
 ];
 
+const vipChildren = ["/vip/about-vip.md"];
+
 const aboutChildren = [
   { text: "自然语言", link: "/about/openclaw-future-hll.md" },
   { text: "未来计划", link: "/about/future-plan.md" }
@@ -85,6 +87,15 @@ const aboutSidebarSections = [
   }
 ];
 
+const vipSidebarSections = [
+  {
+    text: "VIP",
+    link: "/vip/about-vip.md",
+    collapsible: false,
+    children: vipChildren
+  }
+];
+
 export default defineUserConfig({
   lang: "zh-CN",
   title: "OpenClaw Flash",
@@ -99,12 +110,17 @@ export default defineUserConfig({
         link: "/installation/installation-guide.md"
       },
       {
+        text: "VIP",
+        link: "/vip/about-vip.md"
+      },
+      {
         text: "关于作者",
         link: "/about/openclaw-future-hll.md"
       }
     ],
     sidebar: {
       "/about/": aboutSidebarSections,
+      "/vip/": vipSidebarSections,
       "/": tutorialSidebarSections
     },
     sidebarDepth: 0,
