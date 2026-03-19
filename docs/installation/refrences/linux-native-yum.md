@@ -4,8 +4,8 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| [Docker](/installation/refrences/linux-docker.html) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 低 | **大多数用户的首选** |
-| [直接安装 (APT)](/installation/refrences/linux-native-apt.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
+| [Docker](./linux-docker.md) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 低 | **大多数用户的首选** |
+| [直接安装 (APT)](./linux-native-apt.md) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
 | 直接安装 (YUM) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用服务器 |
 
 ::: warning 重要提示
@@ -25,7 +25,7 @@
 - ❌ 日常使用的个人电脑
 - ❌ 包含任何工作或隐私数据的生产服务器
 
-**强烈建议使用 [Docker 安装方式](/installation/refrences/linux-docker.html)** 以获得更好的隔离性和安全性。
+**强烈建议使用 [Docker 安装方式](./linux-docker.md)** 以获得更好的隔离性和安全性。
 :::
 
 这是传统的 Linux 安装方式，直接在主机系统上安装和运行 OpenClaw。本文档适用于 **基于 YUM/DNF 的发行版**（CentOS、RHEL、Fedora、AlmaLinux、Rocky Linux 等）。
@@ -40,7 +40,7 @@ which yum dnf
 
 如果输出包含 `/usr/bin/yum` 或 `/usr/bin/dnf`，说明你的系统使用 YUM/DNF，可以继续本文档。
 
-如果输出为空或你使用的是 Debian、Ubuntu、Linux Mint 等系统，请参考 [Linux 安装方法 2（APT）：直接安装](/installation/refrences/linux-native-apt.html)。
+如果输出为空或你使用的是 Debian、Ubuntu、Linux Mint 等系统，请参考 [Linux 安装方法 2（APT）：直接安装](./linux-native-apt.md)。
 
 ## 前置条件
 

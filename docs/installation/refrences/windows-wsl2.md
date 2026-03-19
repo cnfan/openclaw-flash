@@ -7,8 +7,8 @@
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
 | WSL2 | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | **大多数用户的首选** |
-| [VMware 虚拟机](/installation/refrences/windows-vmware.html) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
-| [直接安装](/installation/refrences/windows-native.html) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
+| [VMware 虚拟机](./windows-vmware.md) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
+| [直接安装](./windows-native.md) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
 
 <details>
 <summary>WSL1 与 WSL2 的区别（目前官方默认支持 WSL2，不需要特别注意）</summary>
@@ -86,6 +86,42 @@ wsl --list --verbose
 * Ubuntu-24.04    Running         2
 ```
 
+::: danger 关键：在第一次进入 Ubuntu 前先执行（真正的单向沙箱）
+WSL 默认会把 Windows 的磁盘（如 `C:`）自动挂载到 Linux 的 `/mnt/` 下（如 `/mnt/c`）。
+
+如果你的目标是“Windows 主机是上帝、WSL 只在沙盒里干活”，那就应该**禁用自动挂载**：让 Windows 可以访问 WSL（`\\wsl$\...`），但 WSL 默认无法访问 Windows 主机磁盘。
+
+注意：这一条需要在 **Ubuntu 已安装** 后执行（因为配置文件写入的是 Ubuntu 内部的 `/etc/wsl.conf`）。
+
+特别提醒：不要把它写到 `%UserProfile%\.wslconfig` 里。
+`.wslconfig` 是 WSL2 虚拟机的全局配置文件（内存、CPU 等），但**不提供** `automount.enabled=false` 这种“全局禁用 Windows 盘自动挂载”的开关；自动挂载属于发行版内的 `wsl.conf`（`/etc/wsl.conf`）。
+
+补充说明：WSL 的“自动挂载”是 **发行版内配置**（`/etc/wsl.conf`），不是 Windows 侧的全局开关；即使禁用了自动挂载，在 WSL 内拥有高权限的进程仍可能通过手动 `mount -t drvfs` 的方式尝试挂载 Windows 盘。因此这更像“默认隔离”，如果你追求更强的硬隔离，优先选 VMware 虚拟机。
+
+以管理员身份打开 PowerShell，执行（如发行版名称不是 `Ubuntu-24.04`，先用 `wsl --list --verbose` 查看并替换）：
+
+```powershell
+wsl -d Ubuntu-24.04 --user root -- sh -lc @'
+cat >/etc/wsl.conf <<"EOF"
+[automount]
+enabled=false
+mountFsTab=false
+
+[interop]
+enabled=false
+appendWindowsPath=false
+
+[boot]
+systemd=true
+EOF
+'@
+
+wsl --shutdown
+```
+
+之后再进入 Ubuntu（`wsl -d Ubuntu-24.04`），检查 `/mnt/c` 应该不存在或为空。
+:::
+
 ## 步骤 3：Ubuntu 初始设置
 
 首次启动 Ubuntu 时，需要完成初始化设置：
@@ -113,7 +149,28 @@ wsl
 wsl -d Ubuntu-24.04
 ```
 
-配置加速源，因为默认是访问国外的网络，加速源是国内大厂做的中转，会快十倍甚至更多
+## 步骤 3.5：发行版升级到最新可用版本（按需）
+
+如果你的目标是“直接升级到 Ubuntu 官方提供的最新可升级版本”，建议在“刚装好 Ubuntu、还没开始装任何依赖”时就完成一次发行版升级。
+
+注意：只有当 Ubuntu 官方开放升级通道时，这一步才会成功；否则会提示“没有可用的新版本”。不要为了强行升级使用 `-d`（开发版升级）去赌运气。
+
+在 Ubuntu 里执行：
+
+```bash
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt autoremove -y
+
+sudo apt install -y update-manager-core
+sudo do-release-upgrade
+```
+
+升级完成后，按提示重启（在 PowerShell 侧执行 `wsl --shutdown` 后再进入发行版也可以）。
+
+## 步骤 3.6：配置加速源（建议在发行版升级之后再做）
+
+配置加速源，因为默认是访问国外的网络，加速源是国内大厂做的中转，会快十倍甚至更多。
 
 ```bash
 source /etc/os-release
@@ -136,10 +193,23 @@ systemctl --version
 
 如果有版本输出，说明 systemd 已可用。
 
-如果未启用，直接用命令写入 `/etc/wsl.conf`：
+如果你在上面的“真正的单向沙箱”步骤里已经写入了 `/etc/wsl.conf`，通常可以直接跳过本步骤。
+
+如果未启用，确保 `/etc/wsl.conf` 里包含：
+
+```text
+[boot]
+systemd=true
+```
+
+如果你已经有 `/etc/wsl.conf`（例如前面配置了 `automount/interop`），不要用覆盖写法；用下面命令“追加缺失项”即可：
 
 ```bash
-echo -e "[boot]\nsystemd=true" | sudo tee /etc/wsl.conf > /dev/null
+sudo sh -lc '
+touch /etc/wsl.conf
+grep -q "^\[boot\]" /etc/wsl.conf || printf "\n[boot]\n" >> /etc/wsl.conf
+grep -q "^systemd=true" /etc/wsl.conf || printf "systemd=true\n" >> /etc/wsl.conf
+'
 ```
 
 保存后在 PowerShell 重启 WSL：
@@ -159,7 +229,7 @@ systemctl --version
 
 在 WSL 场景中，WSL 特有步骤（WSL2 安装、版本确认、systemd）完成后，剩余 OpenClaw 安装流程与 Ubuntu 本机一致，直接按这篇执行：
 
-- [Linux 安装方法 2（APT）：直接安装](/installation/refrences/linux-native-apt.html)
+- [Linux 安装方法 2（APT）：直接安装](./linux-native-apt.md)
 
 建议从该文档的“步骤 2：安装 Node.js”开始继续；如果你想完整复核，也可以从“步骤 1：配置加速源”开始。
 

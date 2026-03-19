@@ -6,73 +6,73 @@ import { getDirname, path } from "vuepress/utils";
 const __dirname = getDirname(import.meta.url);
 
 const installationChildren = [
-  "/installation/installation-guide.md",
-  "/installation/quick-start.md",
-  "/installation/talk-with-lobster.md",
-  "/installation/workspace-control.md"
+  "/installation/installation-guide.html",
+  "/installation/quick-start.html",
+  "/installation/talk-with-lobster.html",
+  "/installation/workspace-control.html"
 ];
 const guideChildren = [
-  "/guides/understand-llm.md",
-  "/guides/intro.md",
-  "/guides/openclaw-self-intro.md",
-  "/guides/skills-progressive-disclosure.md",
-  "/guides/mechanisms.md",
-  "/guides/how-to-build-reliable-lobster.md"
+  "/guides/understand-llm.html",
+  "/guides/intro.html",
+  "/guides/openclaw-self-intro.html",
+  "/guides/skills-progressive-disclosure.html",
+  "/guides/mechanisms.html",
+  "/guides/how-to-build-reliable-lobster.html"
 ];
 
 const misconceptionChildren = [
-  "/misconceptions/not-just-a-chatbot.md",
-  "/misconceptions/language-wall.md",
-  "/misconceptions/memory-pollution.md",
-  "/misconceptions/sandbox-illusion.md",
-  "/misconceptions/myth-of-super-lobster.md"
+  "/misconceptions/not-just-a-chatbot.html",
+  "/misconceptions/language-wall.html",
+  "/misconceptions/memory-pollution.html",
+  "/misconceptions/sandbox-illusion.html",
+  "/misconceptions/myth-of-super-lobster.html"
 ];
 
 const advancedChildren = [
-  "/advanced/how-to-be-advanced.md",
-  "/advanced/writer-workflow.md"
+  "/advanced/how-to-be-advanced.html",
+  "/advanced/writer-workflow.html"
 ];
 
 const expertChildren = [
-  "/expert/how-to-be-expert.md",
-  "/expert/external-systems.md"
+  "/expert/how-to-be-expert.html",
+  "/expert/external-systems.html"
 ];
 
-const vipChildren = ["/vip/about-vip.md"];
+const vipChildren = ["/vip/about-vip.html"];
 
 const aboutChildren = [
-  { text: "自然语言", link: "/about/openclaw-future-hll.md" },
-  { text: "未来计划", link: "/about/future-plan.md" }
+  { text: "自然语言", link: "/about/openclaw-future-hll.html" },
+  { text: "未来计划", link: "/about/future-plan.html" }
 ];
 
 const tutorialSidebarSections = [
   {
     text: "龙虾误区",
-    link: "/misconceptions/not-just-a-chatbot.md",
+    link: "/misconceptions/not-just-a-chatbot.html",
     collapsible: true,
     children: misconceptionChildren
   },
   {
     text: "快速安装",
-    link: "/installation/installation-guide.md",
+    link: "/installation/installation-guide.html",
     collapsible: true,
     children: installationChildren
   },
   {
     text: "新手玩家",
-    link: "/guides/understand-llm.md",
+    link: "/guides/understand-llm.html",
     collapsible: true,
     children: guideChildren
   },
   {
     text: "高级玩家",
-    link: "/advanced/writer-workflow.md",
+    link: "/advanced/writer-workflow.html",
     collapsible: true,
     children: advancedChildren
   },
   {
     text: "专家玩家",
-    link: "/expert/external-systems.md",
+    link: "/expert/external-systems.html",
     collapsible: true,
     children: expertChildren
   }
@@ -81,7 +81,7 @@ const tutorialSidebarSections = [
 const aboutSidebarSections = [
   {
     text: "关于作者",
-    link: "/about/openclaw-future-hll.md",
+    link: "/about/openclaw-future-hll.html",
     collapsible: false,
     children: aboutChildren
   }
@@ -90,7 +90,7 @@ const aboutSidebarSections = [
 const vipSidebarSections = [
   {
     text: "VIP",
-    link: "/vip/about-vip.md",
+    link: "/vip/about-vip.html",
     collapsible: false,
     children: vipChildren
   }
@@ -107,15 +107,15 @@ export default defineUserConfig({
     navbar: [
       {
         text: "教程",
-        link: "/installation/installation-guide.md"
+        link: "/installation/installation-guide.html"
       },
       {
         text: "VIP",
-        link: "/vip/about-vip.md"
+        link: "/vip/about-vip.html"
       },
       {
         text: "关于作者",
-        link: "/about/openclaw-future-hll.md"
+        link: "/about/openclaw-future-hll.html"
       }
     ],
     sidebar: {

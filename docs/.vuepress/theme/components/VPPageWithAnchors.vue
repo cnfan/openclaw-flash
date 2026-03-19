@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import VPPageMeta from "@theme/VPPageMeta.vue";
-import VPPageNav from "@theme/VPPageNav.vue";
+import VPPageNav from "./VPPageNav.vue";
 import type { Slot } from "@vuepress/helper/client";
 import { Content } from "vuepress/client";
 import DocAnchorPanel from "./DocAnchorPanel.vue";

@@ -10,6 +10,8 @@ import { computed, ref } from "vue";
 import { onContentUpdated } from "vuepress/client";
 import VPPageWithAnchors from "../components/VPPageWithAnchors.vue";
 import CustomSidebar from "../components/CustomSidebar.vue";
+import FloatingContact from "../components/FloatingContact.vue";
+import MobileCapsuleNav from "../components/MobileCapsuleNav.vue";
 
 defineSlots<{
   "navbar"?: Slot;
@@ -116,6 +118,7 @@ const onBeforeLeave = scrollPromise.pending;
         <VPHome v-if="frontmatter.home" />
         <VPPageWithAnchors v-else :key="page.path">
           <template #top>
+            <MobileCapsuleNav />
             <slot name="page-top" />
           </template>
           <template #content-top>
@@ -130,6 +133,8 @@ const onBeforeLeave = scrollPromise.pending;
         </VPPageWithAnchors>
       </VPFadeSlideYTransition>
     </slot>
+
+    <FloatingContact />
   </div>
 </template>
 

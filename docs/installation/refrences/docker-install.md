@@ -2,8 +2,8 @@
 
 本页提供统一的 Docker 安装流程，供以下文档复用：
 
-- [Linux 安装方法 1：Docker 安装](/installation/refrences/linux-docker.html)
-- [macOS 安装方法 1：Docker 安装](/installation/refrences/macos-docker.html)
+- [Linux 安装方法 1：Docker 安装](./linux-docker.md)
+- [macOS 安装方法 1：Docker 安装](./macos-docker.md)
 
 ## Linux（Ubuntu / Debian）安装 Docker Engine
 

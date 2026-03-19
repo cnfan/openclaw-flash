@@ -4,8 +4,8 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| [WSL2](/installation/refrences/windows-wsl2.html) | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | **大多数用户的首选** |
-| [VMware 虚拟机](/installation/refrences/windows-vmware.html) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
+| [WSL2](./windows-wsl2.md) | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | **大多数用户的首选** |
+| [VMware 虚拟机](./windows-vmware.md) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
 | 直接安装 | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
 
 ::: warning 重要提示
@@ -32,7 +32,7 @@
 - ❌ 公司配发的办公电脑
 - ❌ 加入域的企业环境
 
-**强烈建议使用 [WSL2 安装方式](/installation/refrences/windows-wsl2.html)** 或 **[VMware 虚拟机安装方式](/installation/refrences/windows-vmware.html)** 以获得更好的隔离性和安全性。
+**强烈建议使用 [WSL2 安装方式](./windows-wsl2.md)** 或 **[VMware 虚拟机安装方式](./windows-vmware.md)** 以获得更好的隔离性和安全性。
 :::
 
 如果你不想使用虚拟化技术，可以直接在 Windows 上通过 PowerShell 安装 OpenClaw。这种方式最简单，但**缺乏隔离性，安全性最低**。
