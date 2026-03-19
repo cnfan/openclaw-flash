@@ -75,7 +75,7 @@ const tutorialSidebarSections = [
 
 const aboutSidebarSections = [
   {
-    text: "关于作者",
+    text: "关于我",
     collapsible: false,
     children: aboutChildren
   }
@@ -83,7 +83,7 @@ const aboutSidebarSections = [
 
 const vipSidebarSections = [
   {
-    text: "VIP",
+    text: "增值服务",
     collapsible: false,
     children: vipChildren
   }
@@ -107,7 +107,7 @@ export default defineUserConfig({
         link: "/vip/about-vip.html"
       },
       {
-        text: "关于作者",
+        text: "作者",
         link: "/about/openclaw-future-hll.html"
       }
     ],

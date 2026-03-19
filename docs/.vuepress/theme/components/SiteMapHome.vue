@@ -98,7 +98,7 @@ const sitemap = computed(() => {
       return {
         text: n.text as string,
         link: n.link as string,
-        docs: sections.flatMap(s => s.docs)
+        sections
       };
     });
 
@@ -110,7 +110,6 @@ const sitemap = computed(() => {
   <div class="sitemap-home">
     <header class="sitemap-header">
       <div class="sitemap-title">网站地图</div>
-      <div class="sitemap-subtitle">大类 → 文档</div>
     </header>
 
     <div class="sitemap-grid">
@@ -118,10 +117,15 @@ const sitemap = computed(() => {
         <RouterLink class="sitemap-card-title" :to="cat.link">{{ cat.text }}</RouterLink>
 
         <div class="sitemap-sections">
-          <div class="sitemap-links">
-            <RouterLink v-for="doc in cat.docs" :key="doc.link" class="sitemap-link" :to="doc.link">
-              {{ doc.text }}
-            </RouterLink>
+          <div v-for="sec in cat.sections" :key="sec.text" class="sitemap-section">
+            <RouterLink v-if="sec.link" class="sitemap-section-title" :to="sec.link">{{ sec.text }}</RouterLink>
+            <div v-else class="sitemap-section-title">{{ sec.text }}</div>
+
+            <div class="sitemap-links">
+              <RouterLink v-for="doc in sec.docs" :key="doc.link" class="sitemap-link" :to="doc.link">
+                {{ doc.text }}
+              </RouterLink>
+            </div>
           </div>
         </div>
       </section>
@@ -144,12 +148,6 @@ const sitemap = computed(() => {
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: 0.2px;
-}
-
-.sitemap-subtitle {
-  margin-top: 0.25rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.95rem;
 }
 
 .sitemap-grid {
@@ -184,6 +182,7 @@ const sitemap = computed(() => {
   margin-top: 0.75rem;
   display: grid;
   gap: 0.75rem;
+  padding-left: 0.4rem;
 }
 
 .sitemap-section-title {
