@@ -109,7 +109,7 @@ const sitemap = computed(() => {
 <template>
   <div class="sitemap-home">
     <header class="sitemap-header">
-      <div class="sitemap-title">网站地图</div>
+      <div class="sitemap-title">文章导航</div>
     </header>
 
     <div class="sitemap-grid">

@@ -48,7 +48,7 @@ const toggle = (): void => {
 };
 
 const douyinOpenUrl = "https://v.douyin.com/8T5oV4bKbG4/";
-const tipText = "内容太多，难免有误。\n抖音联系作者";
+const tipText = "有问题点击我";
 
 let navigateTimer: number | null = null;
 let closeTimer: number | null = null;
@@ -115,9 +115,9 @@ onBeforeUnmount(() => {
 <style scoped>
 .floating-contact {
   position: fixed;
-  right: 18px;
-  top: 45vh;
-  z-index: 50;
+  right: calc(1rem - 1px);
+  bottom: 8rem;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -127,24 +127,24 @@ onBeforeUnmount(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: var(--oc-fab-size);
+  height: var(--oc-fab-size);
   border-radius: 9999px;
-  border: 2px solid rgba(34, 197, 94, 0.95);
+  border: 1px solid rgba(34, 197, 94, 0.95);
   background: rgba(255, 255, 255, 0.96);
   color: rgba(22, 163, 74, 0.98);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-  margin-bottom: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  margin-bottom: 12px;
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.1);
 }
 
 .back-button:hover {
   border-color: rgba(22, 163, 74, 0.98);
   background: rgba(240, 253, 244, 0.98);
-  box-shadow: 0 10px 28px rgba(22, 163, 74, 0.18);
+  box-shadow: 2px 2px 12px 4px rgba(22, 163, 74, 0.15);
 }
 
 .avatar-button {
@@ -163,33 +163,41 @@ onBeforeUnmount(() => {
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
+  width: var(--oc-fab-size);
+  height: var(--oc-fab-size);
   border-radius: 9999px;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .tooltip {
   position: absolute;
-  right: calc(100% + 10px);
+  right: calc(100% + 12px);
   top: 50%;
-  width: clamp(180px, 62vw, 280px);
-  max-width: calc(100vw - 110px);
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.96);
-  color: rgba(10, 10, 10, 0.9);
+  width: auto;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
   font-size: 13px;
-  line-height: 1.35;
-  white-space: pre-line;
+  line-height: 1;
   opacity: 0;
   transform: translateY(-50%) translateX(4px);
   transition: opacity 120ms ease, transform 120ms ease;
   pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  border-width: 4px 0 4px 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.75);
 }
 
 .floating-contact:hover .tooltip,
@@ -198,9 +206,17 @@ onBeforeUnmount(() => {
   transform: translateY(-50%) translateX(0);
 }
 
+@media (max-width: 959px) {
+  .floating-contact {
+    right: calc(1rem - 1px);
+    transform: scale(0.8);
+    transform-origin: 100% 100%;
+  }
+}
+
 @media (max-width: 719px) {
   .floating-contact {
-    right: 12px;
+    right: calc(1rem - 1px);
   }
 
   .back-button {

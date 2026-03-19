@@ -142,8 +142,8 @@ const onBeforeLeave = scrollPromise.pending;
 $MQMobile: 719px;
 
 .vp-theme-container {
-  --oc-fab-size: 56px;
-  --oc-fab-size-mobile: 48px;
+  --oc-fab-size: 50px;
+  --oc-fab-size-mobile: 50px;
 }
 
 @media (max-width: $MQMobile) {
