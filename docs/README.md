@@ -1,42 +1,20 @@
-# 龙虾 Flash 帮助文档
+---
+title: OpenClaw Flash
+---
 
-这是 `OpenClaw Flash` 站点的文档首页。
+<script setup>
+import { onMounted } from 'vue'
+import { withBase } from '@vuepress/client'
 
-命名说明：
+const target = withBase('/installation/installation-guide.html')
 
-- `OpenClaw Flash` 是本站名称
-- 本站当前主要收录的是 `OpenClaw` 的使用文档、设置说明和接入指南
+onMounted(() => {
+  if (typeof window !== 'undefined' && window.location && window.location.pathname !== target) {
+    window.location.replace(target)
+  }
+})
+</script>
 
-左侧菜单已经整理为文档导航，建议直接从侧边栏进入对应专题。
+正在跳转到安装页面...
 
-## 文档入口
-
-- [安装龙虾](/installation/installation-guide.html)
-- [快速设置（安装后）](/installation/quick-start.html)
-- [和龙虾对话（QQ / 飞书）](/installation/talk-with-lobster.html)
-- [让龙虾掌控workspace](/installation/workspace-control.html)
-- [OpenClaw 常用机制](/guides/mechanisms.html)
-
-## 后续建议补充
-
-### 1. 渠道与会话
-
-- 私聊、群聊、线程与 session 的对应关系
-- pairing 配对机制
-- 常见渠道差异
-
-### 2. 安全与运维
-
-- sandbox 与权限边界
-- 升级与备份
-- 故障排查
-- 启动与重启文档站：
-  - 启动开发服务：`pnpm docs:dev`
-  - 生产构建：`pnpm docs:build`
-  - 清理缓存并重启：`pnpm docs:clean && pnpm docs:dev`
-
-### 3. 团队协作
-
-- 如何写 `AGENTS.md`
-- 如何组织 `skills/`
-- 如何管理工作区仓库
+如果没有自动跳转，请点击：<a :href="target">安装龙虾</a>
