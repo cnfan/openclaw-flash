@@ -4,9 +4,10 @@ title: OpenClaw Flash
 
 <script setup>
 import { onMounted } from 'vue'
-import { withBase } from '@vuepress/client'
 
-const target = withBase('/installation/installation-guide.html')
+const base = typeof __VUEPRESS_BASE__ === 'string' ? __VUEPRESS_BASE__ : '/'
+const normalizedBase = base.endsWith('/') ? base : `${base}/`
+const target = `${normalizedBase}installation/installation-guide.html`
 
 onMounted(() => {
   if (typeof window !== 'undefined' && window.location && window.location.pathname !== target) {
