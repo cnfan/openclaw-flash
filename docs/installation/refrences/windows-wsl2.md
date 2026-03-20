@@ -225,13 +225,16 @@ wsl
 systemctl --version
 ```
 
-## 步骤 5：安装 龙虾（复用 Ubuntu Native 指南）
+## 步骤 5：安装 龙虾（两条路线：优先 Docker）
 
-在 WSL 场景中，WSL 特有步骤（WSL2 安装、版本确认、systemd）完成后，剩余 OpenClaw 安装流程与 Ubuntu 本机一致，直接按这篇执行：
+在 WSL 场景中，WSL 特有步骤（WSL2 安装、版本确认、systemd）完成后，后续有两条分支路线：
 
-- [Linux 安装方法 2（APT）：直接安装](./linux-native-apt.md)
+- **路线 A（优先）**：走 Docker 安装，按这篇继续执行：
+  - [Linux 安装方法 1：Docker 安装（推荐）](./linux-docker.md)
+- **路线 B（备选）**：走 Linux native 直接安装（APT），按这篇继续执行：
+  - [Linux 安装方法 2（APT）：直接安装](./linux-native-apt.md)
 
-建议从该文档的“步骤 2：安装 Node.js”开始继续；如果你想完整复核，也可以从“步骤 1：配置加速源”开始。
+如果你看到“需要查看 Linux native 安装 OpenClaw”的提示：这通常是因为当前处于 Linux 环境（WSL 的 Ubuntu）里；但从隔离性、可维护性角度，仍建议优先选 Docker 路线。
 
 ## 常用命令
 
