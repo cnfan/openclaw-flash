@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
 }
 
 .back-button {
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: var(--oc-fab-size);
@@ -220,6 +220,7 @@ onBeforeUnmount(() => {
   }
 
   .back-button {
+    display: inline-flex;
     width: 48px;
     height: 48px;
     font-size: 14px;
