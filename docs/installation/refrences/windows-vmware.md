@@ -78,6 +78,8 @@ https://chuangtzu.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-13.3.0-am
 ::: danger 关键：先做“单向沙箱”设置（建议在安装 Ubuntu 前完成）
 在 VMware Tools 安装完成之前，你通常无法在 Windows 与 Ubuntu 之间复制/粘贴文本；但更重要的是，即使安装了 VMware Tools，**剪贴板共享 / 拖放 / 共享文件夹** 也会让“虚拟机反向接触主机”变得更容易。
 
+如果你要跟着本文的教程执行大量命令（尽量复制粘贴，而不是手敲），建议先把 VMware Tools 装好；等安装与配置完成后，再按你的安全偏好关闭 `Guest Isolation / Shared Folders`。
+
 如果你的目标是“主机是上帝，虚拟机只能在沙盒里干活”，建议先在 VMware 侧把这些能力关掉（这是 Windows/VMware 侧的设置，不依赖 Ubuntu 内部权限）：
 
 1. 关机（Power Off）虚拟机
@@ -157,12 +159,23 @@ isolation.tools.hgfs.disable = "TRUE"
 ![2. 快照-时光机.png](<./assets/windows安装Ubuntu/VMware虚拟机使用/2. 快照-时光机.png>)
 :::
 
-## 步骤 4.5：发行版升级到最新可用版本（按需）
+## 步骤 4.1：安装 VMware Tools（必做）
+
+为了能从 Windows 侧复制/粘贴命令到 Ubuntu（你不可能让新手把几十行命令都手输一遍），建议在系统装好、能联网之后，第一时间把 VMware Tools 装上。
+
+Ubuntu 桌面版推荐直接安装 `open-vm-tools` + `open-vm-tools-desktop`：
+
+```bash
+sudo apt update
+sudo apt install -y open-vm-tools open-vm-tools-desktop
+sudo reboot
+```
+
+重启后你应该能明显感受到：分辨率自适应、鼠标更顺滑、复制粘贴更稳定。
+
+## 步骤 4.5：发行版升级到最新可用版本（非常必要）
 
 如果你的目标是“直接升级到 Ubuntu 官方提供的最新可升级版本”，建议在“刚装好 Ubuntu、还没开始装任何依赖”时就完成一次发行版升级。
-
-注意：只有当 Ubuntu 官方开放升级通道时，这一步才会成功；否则会提示“没有可用的新版本”。不要为了强行升级使用 `-d`（开发版升级）去赌运气。
-
 在 Ubuntu 里执行：
 
 ```bash
@@ -173,21 +186,6 @@ sudo apt autoremove -y
 sudo apt install -y update-manager-core
 sudo do-release-upgrade
 ```
-
-## 步骤 5：安装 VMware Tools（可选）
-
-说明：安装 Ubuntu 系统阶段并没有 VMware Tools；VMware Tools 是系统装好后再安装的。
-
-如果你需要更好的桌面体验（分辨率自适应、剪贴板、拖放等），可以安装 VMware Tools（Ubuntu 下对应 `open-vm-tools`）：
-
-```bash
-# 在 Ubuntu 中
-sudo apt update
-sudo apt install open-vm-tools open-vm-tools-desktop
-sudo reboot
-```
-
-如果你追求更强隔离（单向沙箱），可以不安装 `open-vm-tools-desktop`，并保持上面 `Guest Isolation / Shared Folders` 处于禁用状态。
 
 ## 步骤 6：拍摄快照
 
