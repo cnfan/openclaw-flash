@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
-import { onContentUpdated, useRoute, useRouter } from "vuepress/client";
+import { RouteLink, onContentUpdated, useRoute } from "vuepress/client";
 
 type HeadingItem = {
   id: string;
@@ -13,7 +13,15 @@ const activeId = ref("");
 const panelRef = ref<HTMLElement | null>(null);
 let ticking = false;
 const route = useRoute();
-const router = useRouter();
+
+type NavStackItem = {
+  path: string;
+  fullPath: string;
+  title: string;
+  ts: number;
+};
+
+const NAV_STACK_KEY = "oc:nav-stack";
 
 const visibleHeadings = computed(() => headings.value);
 const isReferencePage = computed(() => route.path.includes("/refrences/"));
@@ -33,12 +41,55 @@ const referenceBackConfig = computed(() => {
   return { title: "上级", path: "/" };
 });
 
+const stackBack = computed<NavStackItem | null>(() => {
+  if (typeof window === "undefined") return null;
+  if (!isReferencePage.value) return null;
+  try {
+    const raw = window.sessionStorage.getItem(NAV_STACK_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length < 2) return null;
+    for (let i = parsed.length - 1; i >= 0; i -= 1) {
+      const cur = parsed[i] as Partial<NavStackItem>;
+      if (!cur || typeof cur !== "object") continue;
+      if (cur.path === route.path) {
+        const prev = parsed[i - 1] as Partial<NavStackItem> | undefined;
+        if (!prev || typeof prev.path !== "string") return null;
+        return {
+          path: prev.path,
+          fullPath: typeof prev.fullPath === "string" && prev.fullPath ? prev.fullPath : prev.path,
+          title: typeof prev.title === "string" ? prev.title : "",
+          ts: typeof prev.ts === "number" ? prev.ts : 0
+        };
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+});
+
 const fallbackPath = computed(() => {
   return referenceBackConfig.value.path;
 });
 
 const parentTitle = computed(() => {
   return referenceBackConfig.value.title;
+});
+
+const backTarget = computed(() => {
+  const stored = stackBack.value;
+  if (stored?.path) {
+    const title = stored.title?.trim();
+    return {
+      path: stored.fullPath || stored.path,
+      title: title || parentTitle.value
+    };
+  }
+  return {
+    path: fallbackPath.value,
+    title: parentTitle.value
+  };
 });
 
 const collectHeadings = (): void => {
@@ -126,14 +177,6 @@ const scrollToHeading = (id: string): void => {
   window.history.replaceState(null, "", `#${id}`);
 };
 
-const goBack = (): void => {
-  if (window.history.length > 1) {
-    router.back();
-    return;
-  }
-  void router.push(fallbackPath.value);
-};
-
 onMounted(() => {
   collectHeadings();
   updateActiveHeading();
@@ -157,12 +200,12 @@ watch(activeId, () => {
 </script>
 
 <template>
-  <aside v-if="headings.length" ref="panelRef" class="doc-anchor-panel" aria-label="页面锚点导航">
-    <button v-if="isReferencePage" type="button" class="anchor-title anchor-title-back" @click="goBack">
-      返回 {{ parentTitle }}
-    </button>
+  <aside v-if="headings.length || isReferencePage" ref="panelRef" class="doc-anchor-panel" aria-label="页面锚点导航">
+    <RouteLink v-if="isReferencePage" class="anchor-title anchor-title-back" :to="backTarget.path">
+      返回 {{ backTarget.title }}
+    </RouteLink>
     <div v-else class="anchor-title">本页目录</div>
-    <ul class="anchor-list">
+    <ul v-if="headings.length" class="anchor-list">
       <li v-for="item in visibleHeadings" :key="item.id">
         <button
           type="button"
@@ -205,6 +248,8 @@ watch(activeId, () => {
 }
 
 .anchor-title-back {
+  display: inline-block;
+  text-decoration: none;
   border: 1px solid var(--vp-c-accent-bg);
   background: var(--vp-c-accent-soft);
   color: var(--vp-c-accent);

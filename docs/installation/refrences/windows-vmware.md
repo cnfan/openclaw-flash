@@ -97,14 +97,14 @@ isolation.tools.hgfs.disable = "TRUE"
 ```
 :::
 
-::: details）安装 Ubuntu 系统前 VMware 准备设置
+::: details 安装 Ubuntu 系统前 VMware 准备设置
 
-![1-选择典型.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/1-选择典型.png)
-![2-选择Ubuntu镜像文件.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/2-选择Ubuntu镜像文件.png)
-![3-用户名和密码.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/3-用户名和密码.png)
-![4-虚拟机命名.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/4-虚拟机命名.png)
-![5-虚拟机文件系统设置.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/5-虚拟机文件系统设置.png)
-![6-完成虚拟机设置.png](./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/6-完成虚拟机设置.png)
+![1-选择典型.png](<./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/1-选择典型.png>)
+![2-选择Ubuntu镜像文件.png](<./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/2-选择Ubuntu镜像文件.png>)
+![3-用户名和密码.png](<./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/3-用户名和密码.png>)
+![4-虚拟机命名.png](<./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/4-虚拟机命名.png>)
+![5-虚拟机文件系统设置.png](<./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/5-虚拟机文件系统设置.png>)
+![6-完成虚拟机设置.png](<./assets/windows安装Ubuntu/1. 安装Ubuntu系统前VMware准备设置/6-完成虚拟机设置.png>)
 :::
 
 ## 步骤 4：安装 Ubuntu图文引导
@@ -113,7 +113,7 @@ isolation.tools.hgfs.disable = "TRUE"
 
 ![1-语言选中文.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/1-语言选中文.png)
 ![2-可访问性.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/2-可访问性.png)
-![3-键盘选英语（美国）.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/3-键盘选英语（美国）.png)
+![3-键盘选英语（美国）.png](<./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/3-键盘选英语（美国）.png>)
 ![4-网络连接.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/4-网络连接.png)
 ![5-安装Ubuntu.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/5-安装Ubuntu.png)
 ![6-选择交互式安装.png](./assets/windows安装Ubuntu/2.Ubuntu系统安装的步骤/6-选择交互式安装.png)
@@ -154,7 +154,7 @@ isolation.tools.hgfs.disable = "TRUE"
 ::: details 4）VMware 虚拟机日常操作
 
 ![1-开关机，重启.png](./assets/windows安装Ubuntu/VMware虚拟机使用/1-开关机，重启.png)
-![2. 快照-时光机.png](./assets/windows安装Ubuntu/VMware虚拟机使用/2. 快照-时光机.png)
+![2. 快照-时光机.png](<./assets/windows安装Ubuntu/VMware虚拟机使用/2. 快照-时光机.png>)
 :::
 
 ## 步骤 4.5：发行版升级到最新可用版本（按需）

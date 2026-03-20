@@ -6,7 +6,8 @@
   "scripts": {
     "docs:dev": "vuepress dev docs --host 0.0.0.0 --port 8080",
     "docs:build": "vuepress build docs",
-    "docs:clean": "vuepress cleanup docs"
+    "docs:clean": "vuepress cleanup docs",
+    "docs:md:lint": "node scripts/markdown-guard.mjs"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-rc.24",
