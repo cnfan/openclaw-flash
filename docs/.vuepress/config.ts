@@ -28,6 +28,8 @@ const misconceptionChildren = [
   "/misconceptions/myth-of-super-lobster.html"
 ];
 
+const factCheckChildren = ["/fact-check/qr-login.html"];
+
 const advancedChildren = [
   "/advanced/how-to-be-advanced.html",
   "/advanced/writer-workflow.html"
@@ -47,11 +49,6 @@ const aboutChildren = [
 
 const tutorialSidebarSections = [
   {
-    text: "龙虾误区",
-    collapsible: true,
-    children: misconceptionChildren
-  },
-  {
     text: "快速安装",
     collapsible: true,
     children: installationChildren
@@ -70,6 +67,16 @@ const tutorialSidebarSections = [
     text: "专家玩家",
     collapsible: true,
     children: expertChildren
+  },
+  {
+    text: "龙虾误区",
+    collapsible: true,
+    children: misconceptionChildren
+  },
+  {
+    text: "打假谣言",
+    collapsible: true,
+    children: factCheckChildren
   }
 ];
 
