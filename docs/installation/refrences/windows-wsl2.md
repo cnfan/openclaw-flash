@@ -236,25 +236,6 @@ systemctl --version
 
 如果你看到“需要查看 Linux native 安装 OpenClaw”的提示：这通常是因为当前处于 Linux 环境（WSL 的 Ubuntu）里；但从隔离性、可维护性角度，仍建议优先选 Docker 路线。
 
-## 常用命令
-
-```bash
-openclaw gateway --port 18789
-openclaw health
-openclaw doctor
-openclaw configure
-```
-
-## 后台服务管理
-
-```bash
-sudo loginctl enable-linger $USER
-systemctl --user status openclaw-gateway
-systemctl --user start openclaw-gateway
-systemctl --user stop openclaw-gateway
-systemctl --user restart openclaw-gateway
-```
-
 <a id="failure-guide"></a>
 
 ## 失败指引（折叠）
