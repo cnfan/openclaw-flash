@@ -4,7 +4,7 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| [Docker](./macos-docker.md) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 中等 | **大多数用户的首选** |
+| [Docker](./macos-docker.md) | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 可忽略 | **大多数用户的首选** |
 | 直接安装 | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用 Mac |
 
 ::: warning 重要提示
@@ -109,58 +109,9 @@ brew --version
 Homebrew 4.2.0
 ```
 
-## 步骤 3：安装 Node.js
+## 步骤 3：准备安装环境
 
-推荐使用 Node 24（最低支持 Node 22 LTS `22.16+`）。
-
-### 方法 A：使用 nvm（推荐）
-
-```bash
-# 安装 nvm
-curl -fsSL https://gitee.com/mirrors/nvm/raw/v0.40.1/install.sh | bash
-
-# 重新加载 shell（zsh 用户）
-source ~/.zshrc
-
-# 如果使用 bash
-source ~/.bash_profile
-
-# 配置 Node 下载镜像与 npm 镜像
-export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
-npm config set registry https://registry.npmmirror.com
-
-# 安装 Node 24
-nvm install 24
-nvm use 24
-```
-
-### 方法 B：使用 Homebrew
-
-```bash
-brew install node@24
-```
-
-验证安装：
-
-```bash
-node --version
-npm --version
-```
-
-判断"没问题"可以看这几点：
-
-- `node --version` 输出 `v24.x.x` 或 `v22.x.x`（22.16+）
-- `npm --version` 输出 `10.x.x` 或更高版本
-
-示例输出：
-
-```text
-$ node --version
-v24.0.0
-
-$ npm --version
-10.8.1
-```
+官方安装脚本会在需要时自动准备运行环境，你不必手动安装或管理 Node。
 
 ## 步骤 4：安装 龙虾
 
@@ -171,8 +122,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 安装脚本会自动：
 
 - 下载最新版本的 OpenClaw
-- 安装到 `~/.local/bin/`
-- 添加到 PATH
+- 完成安装并让 `openclaw` 命令可用
 
 重新加载 shell 使 PATH 生效：
 
@@ -191,23 +141,23 @@ which openclaw
 openclaw --version
 ```
 
-## 步骤 5：配置 launchd（可选但推荐）
+## 步骤 5：配置 launchd（可选）
 
 macOS 使用 `launchd` 管理后台服务，类似于 Linux 的 systemd。
 
-运行新手引导时会自动配置：
-
-```bash
-openclaw onboard --install-daemon
-```
-
-这会创建 `~/Library/LaunchAgents/com.openclaw.gateway.plist` 文件。
+如果你需要开机自启/后台运行，后续可以在配置完成后，再按本文后面的“launchd 管理”章节来开启。
 
 ## 步骤 6：运行新手引导
 
+如果你是通过 `curl -fsSL https://openclaw.ai/install.sh | bash` 安装的，安装流程通常会在最后直接进入一次 `onboard` 的快速设置。
+
+只有在你当时跳过了/中途退出了向导时，才需要手动执行：
+
 ```bash
-openclaw onboard --install-daemon
+openclaw onboard
 ```
+
+建议先参考我们的 [快速设置](../quick-start.md) 提前准备好大模型 API Key，并优先完成 API Key 这一项，其它配置后面再补。
 
 新手引导会配置：
 
@@ -220,7 +170,7 @@ openclaw onboard --install-daemon
 
 ```bash
 # 检查 Gateway 状态
-openclaw gateway status
+openclaw status
 
 # 打开 Control UI（在默认浏览器中）
 open http://localhost:18789
@@ -228,20 +178,45 @@ open http://localhost:18789
 
 如果 Control UI 能加载（`http://127.0.0.1:18789/`），你的 Gateway 网关就已准备就绪。
 
+## PATH 诊断与修复
+
+如果你遇到 `openclaw: command not found`，按顺序执行下面命令快速定位：
+
+```bash
+node -v
+npm -v
+npm prefix -g
+echo "$PATH"
+```
+
+如果 `$(npm prefix -g)/bin` 不在你的 `$PATH` 中，shell 就找不到全局 npm 二进制文件（包括 `openclaw`）。
+
+修复方式：把下面这一行加入你的 shell 启动文件（`~/.zshrc` 或 `~/.bashrc`），然后重新打开终端：
+
+```bash
+export PATH="$(npm prefix -g)/bin:$PATH"
+```
+
 ## 常用命令
 
 ```bash
-# 在前台运行 Gateway（用于调试）
-openclaw gateway --port 18789
-
-# 检查健康状态
-openclaw health
-
 # 诊断问题
 openclaw doctor
 
+# 查看 Gateway 状态
+openclaw status
+
+# 打开浏览器 UI
+openclaw dashboard
+
 # 重新配置
 openclaw configure
+```
+
+如需临时以前台方式运行 Gateway（用于调试/改端口），再使用：
+
+```bash
+openclaw gateway --port 18789
 ```
 
 ## 后台服务管理
@@ -325,49 +300,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 which brew
 ```
 
-### 3. Node.js 安装失败
+### 3. Node/命令环境问题
 
-**nvm 安装失败**
-
-```bash
-# 手动下载安装脚本
-curl -fsSL https://gitee.com/mirrors/nvm/raw/v0.40.1/install.sh -o install_nvm.sh
-bash install_nvm.sh
-
-# 手动添加环境变量（zsh）
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-**Homebrew 安装 Node.js 失败**
-
-```bash
-# 更新 Homebrew
-brew update
-
-# 清理旧版本
-brew uninstall node
-brew cleanup
-
-# 重新安装
-brew install node@24
-```
-
-**权限问题**
-
-```bash
-# 修复 npm 权限
-sudo chown -R $(whoami) ~/.npm
-sudo chown -R $(whoami) /usr/local/lib/node_modules
-```
-
-**Apple Silicon 兼容性**
-
-```bash
-# 如果遇到架构问题，使用 Rosetta 安装
-arch -x86_64 brew install node@24
-```
+如果遇到 `node: command not found` 或 `openclaw: command not found`，优先按本文的「PATH 诊断与修复」排查。
 
 ### 4. 龙虾 安装脚本失败
 
@@ -393,8 +328,8 @@ bash install.sh
 # 检查 PATH
 echo $PATH
 
-# 手动添加（zsh）
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+# 手动添加（按 npm 全局前缀修复）
+echo 'export PATH="$(npm prefix -g)/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 
 # bash 用户
@@ -427,7 +362,7 @@ launchctl list | grep openclaw
 cat ~/Library/LaunchAgents/com.openclaw.gateway.plist
 
 # 重新运行 onboard
-openclaw onboard --install-daemon
+openclaw onboard
 ```
 
 **权限被拒绝**
@@ -437,7 +372,7 @@ openclaw onboard --install-daemon
 chmod 644 ~/Library/LaunchAgents/com.openclaw.gateway.plist
 
 # 确保可执行文件权限正确
-chmod +x ~/.local/bin/openclaw
+chmod +x "$(command -v openclaw)"
 ```
 
 ### 6. 端口已被占用
@@ -478,21 +413,17 @@ chown -R $(whoami) ~/.openclaw
 
 ```bash
 # 移除隔离属性
-sudo xattr -cr ~/.local/bin/openclaw
+sudo xattr -cr "$(command -v openclaw)"
 ```
 
 ### 8. Node 版本不兼容
 
 **错误：`The engine "node" is incompatible`**
 
-```bash
-# 检查当前版本
-node --version
+建议直接重新运行官方安装脚本（它会在需要时准备兼容的 Node 环境）：
 
-# 安装兼容版本
-nvm install 24
-nvm use 24
-nvm alias default 24
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
 ### 9. 内存不足
@@ -526,7 +457,7 @@ tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz ~/.openclaw
 rm -rf ~/.openclaw
 
 # 删除 龙虾
-rm -rf ~/.local/bin/openclaw
+npm uninstall -g openclaw || true
 
 # 删除服务文件
 rm -f ~/Library/LaunchAgents/com.openclaw.*.plist
@@ -534,7 +465,9 @@ rm -f ~/Library/LaunchAgents/com.openclaw.*.plist
 # 重新安装
 curl -fsSL https://openclaw.ai/install.sh | bash
 source ~/.zshrc  # 或 source ~/.bash_profile
-openclaw onboard --install-daemon
+
+# 如需重新做一次快速设置（仅当你跳过/中途退出过）
+openclaw onboard
 ```
 
 ### 11. 性能问题
@@ -570,7 +503,7 @@ launchctl unload ~/Library/LaunchAgents/com.openclaw.gateway.plist 2>/dev/null
 
 # 删除文件
 rm -rf ~/.openclaw
-rm -rf ~/.local/bin/openclaw
+npm uninstall -g openclaw || true
 rm -f ~/Library/LaunchAgents/com.openclaw.*.plist
 rm -rf ~/Library/Logs/OpenClaw
 

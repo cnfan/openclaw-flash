@@ -30,7 +30,7 @@ QQ 机器人的对接原理是：
 1. 扫码完成 在 QQ 开放平台创建机器人应用并授权与权限开通
 2. 官方提供命令，直接复制粘贴完成接入，但是注意Docker用户要在容器内执行
 ```bash
-docker exec -it openclaw-cli bash
+docker exec -it openclaw-gateway bash
 ```
 以下是命令，注意替换 `------------:------------` 为你自己的 `AppID:AppSecret`：
 ```bash
@@ -42,14 +42,16 @@ openclaw channels add --channel qqbot --token "------------:------------"
 
 ## 二、飞书
 
-飞书现在也支持引导安装，一条命令可以完成大部分初始化：
+飞书现在也支持引导安装，一条命令可以完成大部分初始化，如果遇到问题请去https://open.feishu.cn/app 获取对应的信息，结合onboard搞定:
 
 ```bash
 npx -y @larksuite/openclaw-lark install
 ```
+
+
 注意Docker用户要在容器内执行
 ```bash
-docker exec -it openclaw-cli bash
+docker exec -it openclaw-gateway bash
 ```
 
 渠道接入成功后，先重启网关再回到聊天工具测试：

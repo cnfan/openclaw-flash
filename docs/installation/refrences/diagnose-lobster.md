@@ -10,15 +10,15 @@
 
 ```bash
 openclaw doctor
-openclaw status --deep
-openclaw health
+openclaw status
+openclaw dashboard
 ```
 
 建议顺序：
 
 1. 先 `doctor` 看总览
-2. 再 `status --deep` 看运行状态
-3. 最后 `health` 验证链路
+2. 再 `status` 看运行状态
+3. 最后 `dashboard` 验证 Control UI 是否可用
 
 ## 结果怎么判断
 
@@ -28,9 +28,9 @@ openclaw health
 
 ## 常见第一反应
 
-- 配置问题：先检查 `~/.openclaw/openclaw.json`
-- 服务问题：重启 gateway 后再跑 doctor
-- 渠道问题：先在 dashboard 本地验证，再查渠道配置
+- 配置问题：先用 `openclaw doctor` 看提示，再用 `openclaw configure` 逐项修复
+- 服务问题：先 `openclaw status` 看状态，再按对应系统文档重启服务
+- 渠道问题：先在 `openclaw dashboard` 本地验证，再查渠道配置
 
 ## 相关入口
 

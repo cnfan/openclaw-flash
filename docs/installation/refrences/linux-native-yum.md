@@ -70,68 +70,17 @@ sudo yum update -y
 sudo dnf update -y
 ```
 
-## 步骤 2：安装 Node.js
+## 步骤 2：安装 curl（必做）
 
-推荐使用 Node 24（最低支持 Node 22 LTS `22.16+`）。
-
-### 方法 A：使用 nvm（推荐）
+很多刚装好的系统默认没有 `curl`，而安装脚本需要用到它：
 
 ```bash
-# 安装 curl（如果没有）
-sudo yum install -y curl  # CentOS/RHEL
+sudo yum install -y curl  # CentOS/RHEL/Alma/Rocky
 # 或
 sudo dnf install -y curl  # Fedora
-
-# 安装 nvm
-curl -fsSL https://gitee.com/mirrors/nvm/raw/v0.40.1/install.sh | bash
-
-# 重新加载 shell
-source ~/.bashrc
-
-# 配置 Node 下载镜像与 npm 镜像
-export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
-npm config set registry https://registry.npmmirror.com
-
-# 安装 Node 24
-nvm install 24
-nvm use 24
 ```
 
-### 方法 B：使用 NodeSource（CentOS/RHEL/Rocky/Alma）
-
-```bash
-# 安装 Node.js 24.x
-curl -fsSL https://rpm.nodesource.com/setup_24.x | sudo bash -
-sudo yum install -y nodejs
-```
-
-### 方法 C：使用 Fedora 官方仓库（仅 Fedora）
-
-```bash
-sudo dnf install -y nodejs
-```
-
-验证安装：
-
-```bash
-node --version
-npm --version
-```
-
-判断"没问题"可以看这几点：
-
-- `node --version` 输出 `v24.x.x` 或 `v22.x.x`（22.16+）
-- `npm --version` 输出 `10.x.x` 或更高版本
-
-示例输出：
-
-```text
-$ node --version
-v24.0.0
-
-$ npm --version
-10.8.1
-```
+说明：OpenClaw 官方安装脚本会在需要时自动准备运行环境，你不必手动安装或管理 Node。
 
 ## 步骤 3：安装系统依赖
 
@@ -208,7 +157,7 @@ openclaw onboard --install-daemon
 
 ```bash
 # 检查 Gateway 状态
-openclaw gateway status
+openclaw status
 
 # 打开 Control UI
 openclaw dashboard
@@ -258,27 +207,19 @@ systemctl --user restart openclaw-gateway
 
 ### 1. Node.js 安装失败
 
-**nvm 安装失败**
 
 ```bash
 # 手动下载安装脚本
-curl -fsSL https://gitee.com/mirrors/nvm/raw/v0.40.1/install.sh -o install_nvm.sh
 bash install_nvm.sh
 
 # 手动添加环境变量
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-**NodeSource 仓库添加失败**
 
 ```bash
-# 清理旧的 NodeSource 配置
-sudo rm -f /etc/yum.repos.d/nodesource*.repo
 
 # 重新添加
-curl -fsSL https://rpm.nodesource.com/setup_24.x | sudo bash -
 ```
 
 **网络问题（国内）**
@@ -405,9 +346,6 @@ sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
 node --version
 
 # 安装兼容版本
-nvm install 24
-nvm use 24
-nvm alias default 24
 ```
 
 ### 7. 依赖安装失败
@@ -467,7 +405,7 @@ tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz ~/.openclaw
 rm -rf ~/.openclaw
 
 # 删除 龙虾
-rm -rf ~/.local/bin/openclaw
+npm uninstall -g openclaw || true
 
 # 清理服务文件
 rm -f ~/.config/systemd/user/openclaw-*.service

@@ -6,7 +6,7 @@
 
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
-| Docker | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 中等 | **大多数用户的首选** |
+| Docker | ⭐⭐⭐⭐⭐ 推荐 | 优秀 | 可忽略 | **大多数用户的首选** |
 | [直接安装](./macos-native.md) | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用 Mac |
 
 ## 为什么推荐 Docker 安装？
@@ -61,9 +61,8 @@ Docker version 27.0.0, build 1234567
 
 **资源分配**：
 
-- **Memory**：建议 4GB 以上
-- **CPUs**：建议 2 核以上
-- **Disk image size**：建议 64GB 以上
+- 保持默认即可
+- 如果你的机器较老、同时跑很多软件，或后续下载了大量镜像再按需调高
 
 **Docker Engine 配置**：
 
@@ -133,7 +132,7 @@ docker run -it --rm \
   -v ~/.openclaw:/root/.openclaw \
   -p 18789:18789 \
   openclaw/openclaw:latest \
-  openclaw onboard --install-daemon
+  openclaw onboard
 ```
 
 新手引导会配置：
@@ -180,7 +179,7 @@ docker compose up -d
 docker ps | grep openclaw
 
 # 检查 Gateway 状态
-docker exec openclaw openclaw gateway status
+docker exec openclaw openclaw status
 
 # 在浏览器中打开 Control UI
 open http://localhost:18789

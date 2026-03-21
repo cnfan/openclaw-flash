@@ -132,7 +132,7 @@ docker run -it --rm \
   -v ~/.openclaw:/root/.openclaw \
   -p 18789:18789 \
   openclaw/openclaw:latest \
-  openclaw onboard --install-daemon
+  openclaw onboard
 ```
 
 新手引导会配置：
@@ -179,9 +179,11 @@ docker compose up -d
 docker ps | grep openclaw
 
 # 检查 Gateway 状态
-docker exec openclaw openclaw gateway status
+docker exec openclaw openclaw status
 
 # 查看 Control UI
+# 如果你的系统没有 curl（常见于刚装好的 Linux）：
+# sudo apt install -y curl
 curl http://localhost:18789
 ```
 

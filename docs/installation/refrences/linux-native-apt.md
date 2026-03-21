@@ -75,64 +75,16 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 
-## 步骤 2：安装 Node.js
+## 步骤 2：安装 curl（必做）
 
-推荐使用 Node 24（最低支持 Node 22 LTS `22.16+`）。
-
-### 方法 A：使用 nvm（推荐）
+很多刚装好的 Linux 默认没有 `curl`，而安装脚本需要用到它：
 
 ```bash
-# 安装 nvm
-curl -fsSL https://gitee.com/mirrors/nvm/raw/v0.40.1/install.sh | bash
-
-# 重新加载 shell
-source ~/.bashrc
-
-# 配置 Node 下载镜像与 npm 镜像
-export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
-npm config set registry https://registry.npmmirror.com
-
-# 安装 Node 24
-nvm install 24
-nvm use 24
+sudo apt update
+sudo apt install -y curl
 ```
 
-### 方法 B：使用 NodeSource
-
-```bash
-curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-验证安装：
-
-```bash
-node --version
-npm --version
-```
-
-判断"没问题"可以看这几点：
-
-- `node --version` 输出 `v24.x.x` 或 `v22.x.x`（22.16+）
-- `npm --version` 输出 `10.x.x` 或更高版本
-
-示例输出：
-
-```text
-$ node --version
-v24.0.0
-
-$ npm --version
-10.8.1
-```
-
-## 步骤 3：安装系统依赖
-
-OpenClaw 需要一些系统库：
-
-```bash
-sudo apt install -y build-essential python3
-```
+说明：OpenClaw 官方安装脚本会在需要时自动准备 Node 环境，你不必手动安装或管理 Node。
 
 ## 步骤 4：安装 龙虾
 
@@ -143,8 +95,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 安装脚本会自动：
 
 - 下载最新版本的 OpenClaw
-- 安装到 `~/.local/bin/`
-- 添加到 PATH
+- 完成安装并让 `openclaw` 命令可用（实际位置用 `which openclaw` 查看）
 
 重新加载 shell 使 PATH 生效：
 
@@ -175,9 +126,15 @@ systemctl --version
 
 ## 步骤 6：运行新手引导
 
+如果你是通过 `curl -fsSL https://openclaw.ai/install.sh | bash` 安装的，安装流程通常会在最后直接进入一次 `onboard` 的快速设置。
+
+只有在你当时跳过了/中途退出了向导时，才需要手动执行：
+
 ```bash
-openclaw onboard --install-daemon
+openclaw onboard
 ```
+
+建议先参考我们的 [快速设置](../quick-start.md) 提前准备好大模型 API Key，并优先完成 API Key 这一项，其它配置后面再补。
 
 新手引导会配置：
 
@@ -190,7 +147,7 @@ openclaw onboard --install-daemon
 
 ```bash
 # 检查 Gateway 状态
-openclaw gateway status
+openclaw status
 
 # 打开 Control UI
 openclaw dashboard
@@ -198,20 +155,45 @@ openclaw dashboard
 
 如果 Control UI 能加载（`http://127.0.0.1:18789/`），你的 Gateway 网关就已准备就绪。
 
+## PATH 诊断与修复
+
+如果你遇到 `openclaw: command not found`，按顺序执行下面命令快速定位：
+
+```bash
+node -v
+npm -v
+npm prefix -g
+echo "$PATH"
+```
+
+如果 `$(npm prefix -g)/bin` 不在你的 `$PATH` 中，shell 就找不到全局 npm 二进制文件（包括 `openclaw`）。
+
+修复方式：把下面这一行加入你的 shell 启动文件（`~/.bashrc` 或 `~/.zshrc`），然后重新打开终端：
+
+```bash
+export PATH="$(npm prefix -g)/bin:$PATH"
+```
+
 ## 常用命令
 
 ```bash
-# 在前台运行 Gateway（用于调试）
-openclaw gateway --port 18789
-
-# 检查健康状态
-openclaw health
-
 # 诊断问题
 openclaw doctor
 
+# 查看 Gateway 状态
+openclaw status
+
+# 打开浏览器 UI
+openclaw dashboard
+
 # 重新配置
 openclaw configure
+```
+
+如需临时以前台方式运行 Gateway（用于调试/改端口），再使用：
+
+```bash
+openclaw gateway --port 18789
 ```
 
 ## 后台服务管理
@@ -238,38 +220,9 @@ systemctl --user restart openclaw-gateway
 <details>
 <summary>安装或运行失败时请展开</summary>
 
-### 1. Node.js 安装失败
+### 1. Node/命令环境问题
 
-**nvm 安装失败**
-
-```bash
-# 手动下载安装脚本
-curl -fsSL https://gitee.com/mirrors/nvm/raw/v0.40.1/install.sh -o install_nvm.sh
-bash install_nvm.sh
-
-# 手动添加环境变量
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
-source ~/.bashrc
-```
-
-**NodeSource 仓库添加失败**
-
-```bash
-# 清理旧的 NodeSource 配置
-sudo rm -f /etc/apt/sources.list.d/nodesource.list
-
-# 重新添加
-curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
-```
-
-**网络问题（国内）**
-
-配置 npm 镜像：
-
-```bash
-npm config set registry https://registry.npmmirror.com
-```
+如果遇到 `node: command not found` 或 `openclaw: command not found`，优先按本文的「PATH 诊断与修复」排查。
 
 ### 2. 龙虾 安装脚本失败
 
@@ -295,8 +248,8 @@ bash install.sh
 # 检查 PATH
 echo $PATH
 
-# 手动添加
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+# 手动添加（按 npm 全局前缀修复）
+echo 'export PATH="$(npm prefix -g)/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -308,8 +261,8 @@ source ~/.bashrc
 # 检查服务文件
 ls -la ~/.config/systemd/user/
 
-# 重新运行 onboard
-openclaw onboard --install-daemon
+# 重新运行 onboard（仅当你首次安装时跳过/中途退出过）
+openclaw onboard
 ```
 
 **服务无法启动**
@@ -364,14 +317,10 @@ chown -R $USER:$USER ~/.openclaw
 
 **错误：`The engine "node" is incompatible`**
 
-```bash
-# 检查当前版本
-node --version
+建议直接重新运行官方安装脚本（它会在需要时准备兼容的 Node 环境）：
 
-# 安装兼容版本
-nvm install 24
-nvm use 24
-nvm alias default 24
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
 ### 7. 依赖安装失败
@@ -412,8 +361,8 @@ tar -czf openclaw-backup-$(date +%Y%m%d).tar.gz ~/.openclaw
 # 删除配置
 rm -rf ~/.openclaw
 
-# 删除 龙虾
-rm -rf ~/.local/bin/openclaw
+# 卸载 openclaw（如果是通过 npm 全局安装的）
+npm uninstall -g openclaw || true
 
 # 清理服务文件
 rm -f ~/.config/systemd/user/openclaw-*.service
@@ -422,7 +371,9 @@ systemctl --user daemon-reload
 # 重新安装
 curl -fsSL https://openclaw.ai/install.sh | bash
 source ~/.bashrc
-openclaw onboard --install-daemon
+
+# 如需重新做一次快速设置（仅当你跳过/中途退出过）
+openclaw onboard
 ```
 
 ### 10. 性能问题

@@ -5,7 +5,7 @@
 | 安装方式 | 推荐等级 | 隔离性 | 资源占用 | 适用场景 |
 |---------|---------|--------|---------|---------|
 | [WSL2](./windows-wsl2.md) | ⭐⭐⭐⭐⭐ 推荐 | 良好 | 低 | **大多数用户的首选** |
-| [VMware 虚拟机](./windows-vmware.md) | ⭐⭐⭐⭐ 可选 | 优秀 | 高 | 需要完整 Linux 环境或快照功能 |
+| [VMware 虚拟机](./windows-vmware.md) | ⭐⭐⭐⭐ 可选 | 优秀 | 需分配 | 需要完整 Linux 环境或快照功能 |
 | 直接安装 | ⭐⭐ 不推荐 | 无 | 最低 | 仅限无敏感数据的专用设备 |
 
 ::: warning 重要提示
@@ -163,7 +163,7 @@ nssm start OpenClawGateway
 
 ```powershell
 # 检查 Gateway 状态
-openclaw gateway status
+openclaw status
 
 # 打开 Control UI
 openclaw dashboard
@@ -174,11 +174,14 @@ openclaw dashboard
 ## 常用命令
 
 ```powershell
-# 检查健康状态
-openclaw health
-
 # 诊断问题
 openclaw doctor
+
+# 查看 Gateway 状态
+openclaw status
+
+# 打开浏览器 UI
+openclaw dashboard
 
 # 重新配置
 openclaw configure
@@ -241,12 +244,27 @@ New-NetFirewallRule -DisplayName "OpenClaw Gateway" -Direction Inbound -LocalPor
 
 如果 `openclaw` 命令找不到：
 
-```powershell
-# 手动添加到 PATH
-$env:Path += ";C:\Users\$env:USERNAME\.local\bin"
+先排查当前 Node/npm 与全局前缀位置：
 
-# 永久添加
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Users\$env:USERNAME\.local\bin", "User")
+```powershell
+node -v
+npm -v
+npm prefix -g
+echo $env:Path
+```
+
+如果 `npm prefix -g` 输出的目录不在你的 PATH 中，Windows 就找不到全局 npm 二进制文件（包括 `openclaw`）。
+
+把 `npm prefix -g` 的输出加入 PATH：
+
+```powershell
+$npmPrefix = (npm prefix -g).Trim()
+
+# 手动添加到 PATH（当前窗口）
+$env:Path += ";$npmPrefix"
+
+# 永久添加（当前用户）
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$npmPrefix", "User")
 ```
 
 ### SSL 证书问题

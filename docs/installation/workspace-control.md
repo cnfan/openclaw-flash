@@ -19,8 +19,8 @@ openclaw config get tools.profile
 ### Docker 命令
 
 ```bash
-docker exec -it openclaw-cli openclaw config set tools.profile full
-docker exec -it openclaw-cli openclaw config get tools.profile
+docker exec -it openclaw-cli config set tools.profile full
+docker exec -it openclaw-cli config get tools.profile
 ```
 
 如果输出是 `full`，说明核心能力层级已经到位。
@@ -29,8 +29,13 @@ docker exec -it openclaw-cli openclaw config get tools.profile
 ⚠️ 必须有桌面环境  
 Control UI 建议在有桌面浏览器的设备上完成（Windows / macOS / Linux 桌面端都可以）。  
 如果你只在纯命令行环境里操作，体验会明显变差，也更容易漏掉关键开关。
-
 ![能力设置成full](./asserts/installation/能力设置成full.png)
+:::
+
+
+::: warning controlUi配对
+在首次打开controlUi后要立即执行 **`openclaw devices list`** 并批准会话，因为时效非常短
+批准命令是 **`openclaw devices approve <request-id>`**，一定是带短杠的那串，比如我的是`openclaw devices approve 4f289aa0-b613-4b06-bf7f-aa0faed44b39`
 :::
 
 ::: warning 安全提醒
